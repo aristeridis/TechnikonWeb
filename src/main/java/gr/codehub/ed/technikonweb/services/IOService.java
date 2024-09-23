@@ -1,15 +1,15 @@
-package gr.ed.technikon.services;
+package gr.codehub.ed.technikonweb.services;
 
-import gr.ed.technikon.Repositories.OwnerRepositoryInterface;
-import gr.ed.technikon.Repositories.PropertyRepositoryInterface;
-import gr.ed.technikon.Repositories.RepairRepositoryInterface;
-import gr.ed.technikon.enums.PropertyType;
-import gr.ed.technikon.enums.RepairStatus;
-import gr.ed.technikon.enums.RepairType;
-import gr.ed.technikon.exceptions.ResourceNotFoundException;
-import gr.ed.technikon.models.Owner;
-import gr.ed.technikon.models.Property;
-import gr.ed.technikon.models.Repair;
+import gr.codehub.ed.technikonweb.Repositories.OwnerRepositoryInterface;
+import gr.codehub.ed.technikonweb.Repositories.PropertyRepositoryInterface;
+import gr.codehub.ed.technikonweb.Repositories.RepairRepositoryInterface;
+import gr.codehub.ed.technikonweb.enums.PropertyType;
+import gr.codehub.ed.technikonweb.enums.RepairStatus;
+import gr.codehub.ed.technikonweb.enums.RepairType;
+import gr.codehub.ed.technikonweb.exceptions.ResourceNotFoundException;
+import gr.codehub.ed.technikonweb.models.Owner;
+import gr.codehub.ed.technikonweb.models.Property;
+import gr.codehub.ed.technikonweb.models.Repair;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;

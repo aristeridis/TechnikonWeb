@@ -1,6 +1,6 @@
-package gr.ed.technikon.models;
+package gr.codehub.ed.technikonweb.models;
 
-import gr.ed.technikon.enums.PropertyType;
+import gr.codehub.ed.technikonweb.enums.PropertyType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

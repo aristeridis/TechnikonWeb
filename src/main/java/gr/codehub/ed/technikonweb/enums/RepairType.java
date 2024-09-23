@@ -1,4 +1,4 @@
-package gr.ed.technikon.enums;
+package gr.codehub.ed.technikonweb.enums;
 
 public enum RepairType {
     PAINTING,

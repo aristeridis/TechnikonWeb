@@ -1,4 +1,4 @@
-package gr.ed.technikon.utility;
+package gr.codehub.ed.technikonweb.utility;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;

@@ -1,8 +1,8 @@
-package gr.ed.technikon.Repositories;
+package gr.codehub.ed.technikonweb.Repositories;
 
-import gr.ed.technikon.exceptions.ResourceNotFoundException;
-import gr.ed.technikon.models.Repair;
-import gr.ed.technikon.utility.JPAUtil;
+import gr.codehub.ed.technikonweb.exceptions.ResourceNotFoundException;
+import gr.codehub.ed.technikonweb.models.Repair;
+import gr.codehub.ed.technikonweb.utility.JPAUtil;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import lombok.extern.slf4j.Slf4j;

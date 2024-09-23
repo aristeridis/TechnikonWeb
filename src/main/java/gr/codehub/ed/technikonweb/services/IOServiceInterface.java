@@ -1,4 +1,4 @@
-package gr.ed.technikon.services;
+package gr.codehub.ed.technikonweb.services;
 
 public interface IOServiceInterface {
 

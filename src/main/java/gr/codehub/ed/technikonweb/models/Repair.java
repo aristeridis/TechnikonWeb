@@ -1,8 +1,8 @@
-package gr.ed.technikon.models;
+package gr.codehub.ed.technikonweb.models;
 
 import java.math.BigDecimal;
-import gr.ed.technikon.enums.RepairType;
-import gr.ed.technikon.enums.RepairStatus;
+import gr.codehub.ed.technikonweb.enums.RepairType;
+import gr.codehub.ed.technikonweb.enums.RepairStatus;
 import java.util.Date;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

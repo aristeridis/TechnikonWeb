@@ -1,6 +1,6 @@
-package gr.ed.technikon.Repositories;
+package gr.codehub.ed.technikonweb.Repositories;
 
-import gr.ed.technikon.exceptions.ResourceNotFoundException;
+import gr.codehub.ed.technikonweb.exceptions.ResourceNotFoundException;
 import java.util.List;
 import java.util.Optional;
 

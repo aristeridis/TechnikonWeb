@@ -1,4 +1,4 @@
-package gr.ed.technikon.exceptions;
+package gr.codehub.ed.technikonweb.exceptions;
 
 public class CustomException extends RuntimeException {
 

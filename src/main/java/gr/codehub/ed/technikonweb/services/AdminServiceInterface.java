@@ -1,6 +1,6 @@
-package gr.ed.technikon.services;
+package gr.codehub.ed.technikonweb.services;
 
-import gr.ed.technikon.models.Repair;
+import gr.codehub.ed.technikonweb.models.Repair;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;

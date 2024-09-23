@@ -1,9 +1,9 @@
-package gr.ed.technikon.services;
+package gr.codehub.ed.technikonweb.services;
 
-import gr.ed.technikon.Repositories.RepairRepository;
-import gr.ed.technikon.Repositories.RepairRepositoryInterface;
-import gr.ed.technikon.enums.RepairStatus;
-import gr.ed.technikon.models.Repair;
+import gr.codehub.ed.technikonweb.Repositories.RepairRepository;
+import gr.codehub.ed.technikonweb.Repositories.RepairRepositoryInterface;
+import gr.codehub.ed.technikonweb.enums.RepairStatus;
+import gr.codehub.ed.technikonweb.models.Repair;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;

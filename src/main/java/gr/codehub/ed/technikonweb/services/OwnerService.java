@@ -1,16 +1,19 @@
-package gr.ed.technikon.services;
+package gr.codehub.ed.technikonweb.services;
 
-import gr.ed.technikon.Repositories.PropertyRepositoryInterface;
-import gr.ed.technikon.models.Property;
-import gr.ed.technikon.models.Repair;
+import gr.codehub.ed.technikonweb.Repositories.PropertyRepositoryInterface;
+import gr.codehub.ed.technikonweb.models.Property;
+import gr.codehub.ed.technikonweb.models.Repair;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 import java.util.List;
 import java.util.Scanner;
 
 @Slf4j
+@RequestScoped
 public class OwnerService implements OwnerServiceInterface {
-
-    private final PropertyRepositoryInterface propertyRepository;
+@Inject
+    private PropertyRepositoryInterface propertyRepository;
     //private final OwnerRepositoryInterface ownerRepository;
 
     @Override

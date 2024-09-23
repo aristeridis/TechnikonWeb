@@ -1,9 +1,9 @@
-package gr.ed.technikon.Repositories;
+package gr.codehub.ed.technikonweb.Repositories;
 
-import gr.ed.technikon.exceptions.OwnerNotFoundException;
-import gr.ed.technikon.exceptions.ResourceNotFoundException;
-import gr.ed.technikon.models.Owner;
-import gr.ed.technikon.utility.JPAUtil;
+import gr.codehub.ed.technikonweb.exceptions.OwnerNotFoundException;
+import gr.codehub.ed.technikonweb.exceptions.ResourceNotFoundException;
+import gr.codehub.ed.technikonweb.models.Owner;
+import gr.codehub.ed.technikonweb.utility.JPAUtil;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import java.util.List;

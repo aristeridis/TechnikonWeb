@@ -1,4 +1,4 @@
-package gr.ed.technikon.Repositories;
+package gr.codehub.ed.technikonweb.Repositories;
 
 import java.util.List;
 import java.util.Optional;

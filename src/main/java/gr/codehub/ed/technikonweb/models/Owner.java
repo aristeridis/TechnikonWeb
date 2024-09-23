@@ -1,4 +1,4 @@
-package gr.ed.technikon.models;
+package gr.codehub.ed.technikonweb.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

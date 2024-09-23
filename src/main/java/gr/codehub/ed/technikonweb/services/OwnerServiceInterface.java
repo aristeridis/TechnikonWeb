@@ -1,7 +1,7 @@
-package gr.ed.technikon.services;
+package gr.codehub.ed.technikonweb.services;
 
-import gr.ed.technikon.models.Property;
-import gr.ed.technikon.models.Repair;
+import gr.codehub.ed.technikonweb.models.Property;
+import gr.codehub.ed.technikonweb.models.Repair;
 import java.util.List;
 
 public interface OwnerServiceInterface {
