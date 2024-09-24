@@ -4,7 +4,7 @@ import gr.codehub.ed.technikonweb.Repositories.PropertyRepositoryInterface;
 import gr.codehub.ed.technikonweb.models.Owner;
 import gr.codehub.ed.technikonweb.models.Property;
 import gr.codehub.ed.technikonweb.models.Repair;
-import gr.ed.technikon.Repositories.OwnerRepositoryInterface;
+import gr.codehub.ed.technikonweb.Repositories.OwnerRepositoryInterface;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import lombok.extern.slf4j.Slf4j;

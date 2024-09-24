@@ -3,7 +3,7 @@ package gr.codehub.ed.technikonweb.resources;
 import gr.codehub.ed.technikonweb.models.Owner;
 import gr.codehub.ed.technikonweb.services.OwnerService;
 import gr.codehub.ed.technikonweb.models.Property;
-import gr.ed.technikon.exceptions.CustomException;
+import gr.codehub.ed.technikonweb.exceptions.CustomException;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
