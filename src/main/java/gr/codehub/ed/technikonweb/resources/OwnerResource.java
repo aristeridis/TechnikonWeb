@@ -4,12 +4,14 @@ import gr.codehub.ed.technikonweb.models.Owner;
 import gr.codehub.ed.technikonweb.services.OwnerService;
 import gr.codehub.ed.technikonweb.models.Property;
 import gr.codehub.ed.technikonweb.exceptions.CustomException;
+import gr.codehub.ed.technikonweb.services.OwnerServiceInterface;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.NotFoundException;
 import jakarta.ws.rs.POST;
+import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
@@ -19,23 +21,23 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import lombok.extern.slf4j.Slf4j;
 
-@Path("Tachnikon")
+@Path("TechnikonWeb")
 @Slf4j
 public class OwnerResource {
 
     @Inject
     private OwnerService technikonService;
 
-    @Path("owner")
-    @GET
-    public String home() {
-        return "Welcome to owner page";
-    }
+//    @Path("owner")
+//    @GET
+//    public String home() {
+//        return "Welcome to owner page";
+//    }
     
     //get all properties of the owner
     @Path("owner/{ownerId}")
     @GET
-    @Produces("owner/json")
+    @Produces("text/json")
     public List<Property> getPropertiesByOwnerId(@PathParam("ownerId") long ownerId) {
         try {
             return technikonService.getPropertiesByOwnerId(ownerId);
@@ -46,9 +48,9 @@ public class OwnerResource {
 
     @Path("owner/property/{propertyId}")
     @GET
-    @Produces("property/json")
+    @Produces("text/json")
     //details of the property by id
-    public Optional<Property> findById(@PathParam("propertyid") Long propertyId) {
+    public Optional<Property> findById(@PathParam("propertyId") Long propertyId) {
         return technikonService.findById(propertyId);
     }
 
@@ -72,14 +74,14 @@ public class OwnerResource {
     @DELETE
     @Consumes("application/json")
     @Produces("application/json")
-    public boolean safeDeleteById(@PathParam("properyId") Long propertyId) {
+    public boolean safeDeleteById(@PathParam("propertyId") Long propertyId) {
         return technikonService.safeDeleteById(propertyId);
 
     }
 
     //update property
     @Path("owner/property")
-    @POST
+    @PUT
     @Consumes("application/json")
     @Produces("application/json")
     public Optional<Property> update(Property property) {

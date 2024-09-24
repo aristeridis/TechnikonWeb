@@ -16,43 +16,45 @@ import java.util.Scanner;
 @RequestScoped
 public class OwnerService implements OwnerServiceInterface {
 
-    @Inject
-    private PropertyRepositoryInterface propertyRepository;
-    private OwnerRepositoryInterface ownerRepository;
+	@Inject
+	private PropertyRepositoryInterface propertyRepository;
+	@Inject
+	private OwnerRepositoryInterface ownerRepository;
 
-    @Override
-    public boolean acceptance(Repair repair) {
-        System.out.println(repair.toString());
-        System.out.println("Do you accept the proposed repair ?");
-        Scanner scanner = new Scanner(System.in);
-        boolean acceptance = scanner.nextBoolean();
-        repair.setAcceptance(acceptance);
-        return acceptance;
+	@Override
+	public boolean acceptance(Repair repair) {
+		System.out.println(repair.toString());
+		System.out.println("Do you accept the proposed repair ?");
+		Scanner scanner = new Scanner(System.in);
+		boolean acceptance = scanner.nextBoolean();
+		repair.setAcceptance(acceptance);
+		return acceptance;
 
-    }
+	}
 
-    public OwnerService(PropertyRepositoryInterface propertyRepository) {
-        this.propertyRepository = propertyRepository;
-    }
+	public OwnerService(PropertyRepositoryInterface propertyRepository) {
+		this.propertyRepository = propertyRepository;
+	}
 
-    @Override
-    public List<Property> getPropertiesByOwnerId(Long ownerId) {
-        return propertyRepository.findByOwnerId(ownerId);
-    }
+	@Override
+	public List<Property> getPropertiesByOwnerId(Long ownerId) {
+		return propertyRepository.findByOwnerId(ownerId);
+	}
 
-    public Optional<Property> findById(Long propertyId) {
-        return propertyRepository.findById(propertyId);
-    }
+	public Optional<Property> findById(Long propertyId) {
+		return propertyRepository.findById(propertyId);
+	}
 
-    public Optional<Owner> save(Owner owner) {
-        return ownerRepository.save(owner);
-    }
+	public Optional<Owner> save(Owner owner) {
+		return ownerRepository.save(owner);
+	}
 
-    public boolean safeDeleteById(Long propertyId) {
-        return propertyRepository.deleteById(propertyId);
-    }
-    public Optional<Property> update(Property property) {
-        return propertyRepository.update(property);
-    }
+	public boolean safeDeleteById(Long propertyId) {
+		return propertyRepository.deleteById(propertyId);
+	}
+
+	public Optional<Property> update(Property property) {
+		return propertyRepository.update(property);
+	}
 
 }
