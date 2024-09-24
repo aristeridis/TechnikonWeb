@@ -4,7 +4,9 @@ import gr.codehub.ed.technikonweb.models.Owner;
 import gr.codehub.ed.technikonweb.services.OwnerService;
 import gr.codehub.ed.technikonweb.models.Property;
 import gr.codehub.ed.technikonweb.exceptions.CustomException;
-import gr.codehub.ed.technikonweb.services.OwnerServiceInterface;
+import gr.codehub.ed.technikonweb.exceptions.OwnerNotFoundException;
+import gr.codehub.ed.technikonweb.exceptions.ResourceNotFoundException;
+import gr.codehub.ed.technikonweb.models.Repair;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
@@ -40,7 +42,8 @@ public class OwnerResource {
 	public List<Property> getPropertiesByOwnerId(@PathParam("ownerId") long ownerId) {
 		try {
 			return technikonService.getPropertiesByOwnerId(ownerId);
-		} catch (NotFoundException e) {
+		} catch (OwnerNotFoundException onfe) {
+			onfe.getMessage();
 			return null;
 		}
 	}
@@ -50,7 +53,14 @@ public class OwnerResource {
 	@Produces("text/json")
 	//details of the property by id
 	public Optional<Property> findById(@PathParam("propertyId") Long propertyId) {
-		return technikonService.findById(propertyId);
+		try {
+			return technikonService.findById(propertyId);
+
+		} catch (ResourceNotFoundException rnfe) {
+			Logger.getLogger(OwnerResource.class.getName()).log(Level.SEVERE, null, rnfe);
+
+		}
+		return null;
 	}
 
 	//create owner
@@ -59,11 +69,12 @@ public class OwnerResource {
 	@Consumes("application/json")
 	@Produces("application/json")
 	public Owner createOwner(Owner owner) {
+		log.debug("Owner: " + owner.getSurName() + owner.getName());
 		try {
 			technikonService.saveOwner(owner);
 			return owner;
-		} catch (CustomException ce) {
-			Logger.getLogger(OwnerResource.class.getName()).log(Level.SEVERE, null, ce);
+		} catch (OwnerNotFoundException onfe) {
+			Logger.getLogger(OwnerResource.class.getName()).log(Level.SEVERE, null, onfe);
 		}
 		return new Owner();
 	}
@@ -74,8 +85,13 @@ public class OwnerResource {
 	@Consumes("application/json")
 	@Produces("application/json")
 	public boolean safeDeleteById(@PathParam("propertyId") Long propertyId) {
-		return technikonService.safeDeleteById(propertyId);
+		try {
+			return technikonService.safeDeleteById(propertyId);
 
+		} catch (CustomException ce) {
+			ce.getMessage();
+		}
+		return false;
 	}
 
 	//update property
@@ -83,18 +99,65 @@ public class OwnerResource {
 	@PUT
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Optional<Property> update(Property property) {
-		return technikonService.update(property);
+	public Optional<Property> updatePorperty(Property property) {
+		try {
+			return technikonService.updatePorperty(property);
+
+		} catch (ResourceNotFoundException rnfe) {
+			rnfe.getMessage();
+
+		}
+		return null;
 	}
 
-//update property
+	//create property
 	@Path("owner/property")
 	@POST
 	@Consumes("application/json")
 	@Produces("application/json")
 	public Optional<Property> createProperty(Property property) {
-		return technikonService.saveProperty(property);
+		log.debug("property: " + property.getOwner());
+		try {
+			return technikonService.saveProperty(property);
 
+		} catch (ResourceNotFoundException rnfe) {
+			Logger.getLogger(OwnerResource.class.getName()).log(Level.SEVERE, null, rnfe);
+		}
+		return null;
 	}
 
+	//create repair
+	@Path("owner/repair")
+	@POST
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Optional<Repair> createRepair(Repair repair) {
+		log.debug("repair: " + repair.getProperty());
+
+		try {
+			return technikonService.saveRepair(repair);
+
+		} catch (CustomException ce) {
+			Logger.getLogger(OwnerResource.class.getName()).log(Level.SEVERE, null, ce);
+
+		}
+		return null;
+	}
+
+	//update repair
+	@Path("owner/repair")
+	@PUT
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Optional<Repair> updateRepair(Repair repair) {
+		log.debug("Property:" + repair.getProperty());
+		try {
+			return technikonService.updateRepair(repair);
+
+		} catch (ResourceNotFoundException rnfe) {
+			Logger.getLogger(OwnerResource.class.getName()).log(Level.SEVERE, null, rnfe);
+
+		}
+		return null;
+	}
 }
