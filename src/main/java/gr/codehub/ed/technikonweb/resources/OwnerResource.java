@@ -11,7 +11,6 @@ import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
-import jakarta.ws.rs.NotFoundException;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
@@ -89,9 +88,10 @@ public class OwnerResource {
 			return technikonService.safeDeleteById(propertyId);
 
 		} catch (CustomException ce) {
-			ce.getMessage();
+			Property property = new Property();
+			property.setPropertyCode(-1);
+			return false;
 		}
-		return false;
 	}
 
 	//update property
