@@ -45,7 +45,7 @@ public class OwnerService implements OwnerServiceInterface {
 		return propertyRepository.findById(propertyId);
 	}
 
-	public Optional<Owner> save(Owner owner) {
+	public Optional<Owner> saveOwner(Owner owner) {
 		return ownerRepository.save(owner);
 	}
 
@@ -55,6 +55,9 @@ public class OwnerService implements OwnerServiceInterface {
 
 	public Optional<Property> update(Property property) {
 		return propertyRepository.update(property);
+	}
+	public Optional<Property> saveProperty(Property property){
+		return propertyRepository.save(property);
 	}
 
 }

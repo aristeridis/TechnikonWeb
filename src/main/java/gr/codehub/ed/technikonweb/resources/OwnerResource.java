@@ -25,67 +25,76 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class OwnerResource {
 
-    @Inject
-    private OwnerService technikonService;
+	@Inject
+	private OwnerService technikonService;
 
 //    @Path("owner")
 //    @GET
 //    public String home() {
 //        return "Welcome to owner page";
 //    }
-    
-    //get all properties of the owner
-    @Path("owner/{ownerId}")
-    @GET
-    @Produces("text/json")
-    public List<Property> getPropertiesByOwnerId(@PathParam("ownerId") long ownerId) {
-        try {
-            return technikonService.getPropertiesByOwnerId(ownerId);
-        } catch (NotFoundException e) {
-            return null;
-        }
-    }
+	//get all properties of the owner
+	@Path("owner/{ownerId}")
+	@GET
+	@Produces("text/json")
+	public List<Property> getPropertiesByOwnerId(@PathParam("ownerId") long ownerId) {
+		try {
+			return technikonService.getPropertiesByOwnerId(ownerId);
+		} catch (NotFoundException e) {
+			return null;
+		}
+	}
 
-    @Path("owner/property/{propertyId}")
-    @GET
-    @Produces("text/json")
-    //details of the property by id
-    public Optional<Property> findById(@PathParam("propertyId") Long propertyId) {
-        return technikonService.findById(propertyId);
-    }
+	@Path("owner/property/{propertyId}")
+	@GET
+	@Produces("text/json")
+	//details of the property by id
+	public Optional<Property> findById(@PathParam("propertyId") Long propertyId) {
+		return technikonService.findById(propertyId);
+	}
 
-    //create owner
-    @Path("owner")
-    @POST
-    @Consumes("application/json")
-    @Produces("application/json")
-    public Owner save(Owner owner) {
-        try {
-            technikonService.save(owner);
-            return owner;
-        } catch (CustomException ce) {
-            Logger.getLogger(OwnerResource.class.getName()).log(Level.SEVERE, null, ce);
-        }
-        return new Owner();
-    }
+	//create owner
+	@Path("owner")
+	@POST
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Owner createOwner(Owner owner) {
+		try {
+			technikonService.saveOwner(owner);
+			return owner;
+		} catch (CustomException ce) {
+			Logger.getLogger(OwnerResource.class.getName()).log(Level.SEVERE, null, ce);
+		}
+		return new Owner();
+	}
 
-    //property delete
-    @Path("owner/property/{propertyId}")
-    @DELETE
-    @Consumes("application/json")
-    @Produces("application/json")
-    public boolean safeDeleteById(@PathParam("propertyId") Long propertyId) {
-        return technikonService.safeDeleteById(propertyId);
+	//property delete
+	@Path("owner/property/{propertyId}")
+	@DELETE
+	@Consumes("application/json")
+	@Produces("application/json")
+	public boolean safeDeleteById(@PathParam("propertyId") Long propertyId) {
+		return technikonService.safeDeleteById(propertyId);
 
-    }
+	}
 
-    //update property
-    @Path("owner/property")
-    @PUT
-    @Consumes("application/json")
-    @Produces("application/json")
-    public Optional<Property> update(Property property) {
-        return technikonService.update(property);
-    }
+	//update property
+	@Path("owner/property")
+	@PUT
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Optional<Property> update(Property property) {
+		return technikonService.update(property);
+	}
+
+//update property
+	@Path("owner/property")
+	@POST
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Optional<Property> createProperty(Property property) {
+		return technikonService.saveProperty(property);
+
+	}
 
 }
