@@ -1,9 +1,9 @@
 package gr.codehub.ed.technikonweb.repositories;
 
-import gr.codehub.ed.technikonweb.exceptions.CustomException;
+import jakarta.enterprise.context.RequestScoped;
 import java.util.List;
 import java.util.Optional;
-
+@RequestScoped
 public interface PropertyRepositoryInterface<T, K> {
 
     Optional<T> findById(K id);

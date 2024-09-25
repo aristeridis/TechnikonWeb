@@ -25,17 +25,16 @@ import lombok.extern.slf4j.Slf4j;
 
 @Path("Owner")
 @Slf4j
-@RequestScoped
 public class OwnerResource {
 
 	@Inject
 	private OwnerService technikonService;
 
-//    @Path("owner")
-//    @GET
-//    public String home() {
-//        return "Welcome to owner page";
-//    }
+    @Path("owner")
+    @GET
+    public String home() {
+        return "Welcome to owner page";
+    }
 	//get all properties of the owner
 	@Path("/{ownerId}")
 	@GET
@@ -64,22 +63,21 @@ public class OwnerResource {
 		return null;
 	}
 
-	//create owner
-	@Path("owner")
-	@POST
-	@Consumes("application/json")
-	@Produces("application/json")
-	public Owner createOwner(Owner owner) {
-		log.debug("Owner: " + owner.getSurName() + owner.getName());
-		try {
-			technikonService.saveOwner(owner);
-			return owner;
-		} catch (OwnerNotFoundException onfe) {
-			Logger.getLogger(OwnerResource.class.getName()).log(Level.SEVERE, null, onfe);
-		}
-		return new Owner();
-	}
-
+//	//create owner
+//	@Path("owner")
+//	@POST
+//	@Consumes("application/json")
+//	@Produces("application/json")
+//	public Owner createOwner(Owner owner) {
+//		log.debug("Owner: " + owner.getSurName() + owner.getName());
+//		try {
+//			technikonService.saveOwner(owner);
+//			return owner;
+//		} catch (OwnerNotFoundException onfe) {
+//			Logger.getLogger(OwnerResource.class.getName()).log(Level.SEVERE, null, onfe);
+//		}
+//		return new Owner();
+//	}
 	//property delete
 	@Path("/property/{propertyId}")
 	@DELETE
@@ -128,38 +126,37 @@ public class OwnerResource {
 		return null;
 	}
 
-	//create repair
-	@Path("/repair")
-	@POST
-	@Consumes("application/json")
-	@Produces("application/json")
-	public Optional<Repair> createRepair(Repair repair) {
-		log.debug("repair: " + repair.getProperty());
-
-		try {
-			return technikonService.saveRepair(repair);
-
-		} catch (CustomException ce) {
-			Logger.getLogger(OwnerResource.class.getName()).log(Level.SEVERE, null, ce);
-
-		}
-		return null;
-	}
-
-	//update repair
-	@Path("/repair")
-	@PUT
-	@Consumes("application/json")
-	@Produces("application/json")
-	public Optional<Repair> updateRepair(Repair repair) {
-		log.debug("Property:" + repair.getProperty());
-		try {
-			return technikonService.updateRepair(repair);
-
-		} catch (ResourceNotFoundException rnfe) {
-			Logger.getLogger(OwnerResource.class.getName()).log(Level.SEVERE, null, rnfe);
-
-		}
-		return null;
-	}
+//	//create repair
+//	@Path("/repair")
+//	@POST
+//	@Consumes("application/json")
+//	@Produces("application/json")
+//	public Optional<Repair> createRepair(Repair repair) {
+//		log.debug("repair: " + repair.getProperty());
+//
+//		try {
+//			return technikonService.saveRepair(repair);
+//
+//		} catch (CustomException ce) {
+//			Logger.getLogger(OwnerResource.class.getName()).log(Level.SEVERE, null, ce);
+//
+//		}
+//		return null;
+//	}
+//	//update repair
+//	@Path("/repair")
+//	@PUT
+//	@Consumes("application/json")
+//	@Produces("application/json")
+//	public Optional<Repair> updateRepair(Repair repair) {
+//		log.debug("Property:" + repair.getProperty());
+//		try {
+//			return technikonService.updateRepair(repair);
+//
+//		} catch (ResourceNotFoundException rnfe) {
+//			Logger.getLogger(OwnerResource.class.getName()).log(Level.SEVERE, null, rnfe);
+//
+//		}
+//		return null;
+//	}
 }

@@ -1,9 +1,12 @@
 package gr.codehub.ed.technikonweb.repositories;
 
 import gr.codehub.ed.technikonweb.exceptions.ResourceNotFoundException;
+import jakarta.enterprise.context.RequestScoped;
 import java.util.List;
 import java.util.Optional;
 
+
+@RequestScoped
 public interface OwnerRepositoryInterface<T, K, S> {
 
     Optional<T> findByOwnerId(K id);

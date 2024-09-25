@@ -1,8 +1,11 @@
 package gr.codehub.ed.technikonweb.repositories;
 
+import jakarta.enterprise.context.RequestScoped;
 import java.util.List;
 import java.util.Optional;
 
+
+@RequestScoped
 public interface RepairRepositoryInterface<T, K, D> {
 
     Optional<T> findById(K repairId);

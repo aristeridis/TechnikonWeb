@@ -5,6 +5,7 @@ import gr.codehub.ed.technikonweb.exceptions.OwnerNotFoundException;
 import gr.codehub.ed.technikonweb.models.Property;
 import gr.codehub.ed.technikonweb.utility.JPAUtil;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
@@ -16,7 +17,7 @@ import java.util.Optional;
 import lombok.NoArgsConstructor;
 
 @Slf4j
-@ApplicationScoped
+@RequestScoped
 @NoArgsConstructor
 public class PropertyRepository implements PropertyRepositoryInterface<Property, Long> {
 

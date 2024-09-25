@@ -1,28 +1,24 @@
 package gr.codehub.ed.technikonweb.services;
 
 import gr.codehub.ed.technikonweb.repositories.PropertyRepositoryInterface;
-import gr.codehub.ed.technikonweb.models.Owner;
 import gr.codehub.ed.technikonweb.models.Property;
 import gr.codehub.ed.technikonweb.models.Repair;
-import gr.codehub.ed.technikonweb.repositories.OwnerRepositoryInterface;
-import gr.codehub.ed.technikonweb.repositories.RepairRepositoryInterface;
+import gr.codehub.ed.technikonweb.repositories.PropertyRepository;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
+import lombok.NoArgsConstructor;
 
 @Slf4j
 @RequestScoped
+@NoArgsConstructor
 public class OwnerService implements OwnerServiceInterface {
 
-	@Inject
-	private PropertyRepositoryInterface propertyRepository;
-	@Inject
-	private OwnerRepositoryInterface ownerRepository;
-	@Inject
-	private RepairRepositoryInterface repairepository;
+	
+	private PropertyRepositoryInterface propertyRepository = new PropertyRepository();
 
 	@Override
 	public boolean acceptance(Repair repair) {
@@ -48,10 +44,6 @@ public class OwnerService implements OwnerServiceInterface {
 		return propertyRepository.findById(propertyId);
 	}
 
-	public Optional<Owner> saveOwner(Owner owner) {
-		return ownerRepository.save(owner);
-	}
-
 	public boolean safeDeleteById(Long propertyId) {
 		return propertyRepository.deleteById(propertyId);
 	}
@@ -63,14 +55,4 @@ public class OwnerService implements OwnerServiceInterface {
 		return propertyRepository.save(property);
 	}
 	
-	
-	public Optional<Repair> saveRepair(Repair repair){
-		return  repairepository.save(repair);
-	}
-	public Optional<Repair> updateRepair(Repair repair){
-		return repairepository.update(repair);
-	}
-
-	
-
 }

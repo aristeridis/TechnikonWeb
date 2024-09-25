@@ -5,6 +5,7 @@ import gr.codehub.ed.technikonweb.exceptions.ResourceNotFoundException;
 import gr.codehub.ed.technikonweb.models.Owner;
 import gr.codehub.ed.technikonweb.utility.JPAUtil;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
@@ -14,7 +15,7 @@ import java.util.Optional;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@ApplicationScoped
+@RequestScoped
 public class OwnerRepository implements OwnerRepositoryInterface<Owner, Long, String> {
 
 	@PersistenceContext(unitName = "Persistence")
@@ -34,6 +35,7 @@ public class OwnerRepository implements OwnerRepositoryInterface<Owner, Long, St
 	}
 
 	@Override
+	@Transactional
 	public Optional<Owner> findByVatNumber(Long vatNumber) {
 		try {
 			entityManager.getTransaction().begin();
@@ -52,6 +54,8 @@ public class OwnerRepository implements OwnerRepositoryInterface<Owner, Long, St
 	}
 
 	@Override
+	@Transactional
+
 	public Optional<Owner> findByEmail(String email) {
 		try {
 			entityManager.getTransaction().begin();
@@ -139,6 +143,7 @@ public class OwnerRepository implements OwnerRepositoryInterface<Owner, Long, St
 	}
 
 	@Override
+	@Transactional
 	public Optional<Owner> update(Owner owner) {
 		try {
 			entityManager.getTransaction().begin();
