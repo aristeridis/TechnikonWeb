@@ -25,14 +25,14 @@ import lombok.extern.slf4j.Slf4j;
 
 @Path("Owner")
 @Slf4j
+@RequestScoped
 public class OwnerResource {
-
 	@Inject
 	private OwnerService technikonService;
 
     @Path("owner")
     @GET
-    public String home() {
+    public String owner() {
         return "Welcome to owner page";
     }
 	//get all properties of the owner

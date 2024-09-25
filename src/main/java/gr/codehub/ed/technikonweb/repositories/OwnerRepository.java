@@ -55,7 +55,6 @@ public class OwnerRepository implements OwnerRepositoryInterface<Owner, Long, St
 
 	@Override
 	@Transactional
-
 	public Optional<Owner> findByEmail(String email) {
 		try {
 			entityManager.getTransaction().begin();

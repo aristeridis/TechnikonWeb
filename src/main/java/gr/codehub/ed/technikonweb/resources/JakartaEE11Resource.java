@@ -8,7 +8,7 @@ import jakarta.ws.rs.core.Response;
  *
  * @author 
  */
-@Path("resources")
+@Path("gen")
 public class JakartaEE11Resource {
     
     @GET
