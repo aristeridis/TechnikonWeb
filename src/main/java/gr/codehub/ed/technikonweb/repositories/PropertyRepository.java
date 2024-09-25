@@ -1,4 +1,4 @@
-package gr.codehub.ed.technikonweb.Repositories;
+package gr.codehub.ed.technikonweb.repositories;
 
 import gr.codehub.ed.technikonweb.exceptions.CustomException;
 import gr.codehub.ed.technikonweb.exceptions.OwnerNotFoundException;
@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PropertyRepository implements PropertyRepositoryInterface<Property, Long> {
 
-	@PersistenceContext(unitName = "Persistance")
+	@PersistenceContext(unitName = "Persistence")
 	private EntityManager entityManager;
 
 	@Override

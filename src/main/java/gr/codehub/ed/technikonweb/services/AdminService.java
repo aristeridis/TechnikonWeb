@@ -1,7 +1,7 @@
 package gr.codehub.ed.technikonweb.services;
 
-import gr.codehub.ed.technikonweb.Repositories.RepairRepository;
-import gr.codehub.ed.technikonweb.Repositories.RepairRepositoryInterface;
+import gr.codehub.ed.technikonweb.repositories.RepairRepository;
+import gr.codehub.ed.technikonweb.repositories.RepairRepositoryInterface;
 import gr.codehub.ed.technikonweb.enums.RepairStatus;
 import gr.codehub.ed.technikonweb.models.Repair;
 import java.math.BigDecimal;

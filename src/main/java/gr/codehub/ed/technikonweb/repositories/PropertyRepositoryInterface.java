@@ -1,4 +1,4 @@
-package gr.codehub.ed.technikonweb.Repositories;
+package gr.codehub.ed.technikonweb.repositories;
 
 import gr.codehub.ed.technikonweb.exceptions.CustomException;
 import java.util.List;

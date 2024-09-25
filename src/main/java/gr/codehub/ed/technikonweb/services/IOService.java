@@ -1,8 +1,8 @@
 package gr.codehub.ed.technikonweb.services;
 
-import gr.codehub.ed.technikonweb.Repositories.OwnerRepositoryInterface;
-import gr.codehub.ed.technikonweb.Repositories.PropertyRepositoryInterface;
-import gr.codehub.ed.technikonweb.Repositories.RepairRepositoryInterface;
+import gr.codehub.ed.technikonweb.repositories.OwnerRepositoryInterface;
+import gr.codehub.ed.technikonweb.repositories.PropertyRepositoryInterface;
+import gr.codehub.ed.technikonweb.repositories.RepairRepositoryInterface;
 import gr.codehub.ed.technikonweb.enums.PropertyType;
 import gr.codehub.ed.technikonweb.enums.RepairStatus;
 import gr.codehub.ed.technikonweb.enums.RepairType;

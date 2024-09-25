@@ -1,4 +1,4 @@
-package gr.codehub.ed.technikonweb.Repositories;
+package gr.codehub.ed.technikonweb.repositories;
 
 import gr.codehub.ed.technikonweb.exceptions.OwnerNotFoundException;
 import gr.codehub.ed.technikonweb.exceptions.ResourceNotFoundException;
@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 @ApplicationScoped
 public class OwnerRepository implements OwnerRepositoryInterface<Owner, Long, String> {
 
-	@PersistenceContext(unitName = "Persistance")
+	@PersistenceContext(unitName = "Persistence")
 	private EntityManager entityManager;
 
 	@Override

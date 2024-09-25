@@ -1,4 +1,4 @@
-package gr.codehub.ed.technikonweb.Repositories;
+package gr.codehub.ed.technikonweb.repositories;
 
 import gr.codehub.ed.technikonweb.exceptions.ResourceNotFoundException;
 import gr.codehub.ed.technikonweb.models.Repair;
@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class RepairRepository implements RepairRepositoryInterface<Repair, Long, Date> {
 
-	@PersistenceContext(unitName = "Persistance")
+	@PersistenceContext(unitName = "Persistence")
 	private EntityManager entityManager;
 
 	@Override

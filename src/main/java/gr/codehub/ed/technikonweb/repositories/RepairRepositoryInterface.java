@@ -1,4 +1,4 @@
-package gr.codehub.ed.technikonweb.Repositories;
+package gr.codehub.ed.technikonweb.repositories;
 
 import java.util.List;
 import java.util.Optional;

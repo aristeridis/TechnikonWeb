@@ -1,17 +1,17 @@
 package gr.codehub.ed.technikonweb.utility;
 
-import gr.codehub.ed.technikonweb.Repositories.OwnerRepository;
-import gr.codehub.ed.technikonweb.Repositories.OwnerRepositoryInterface;
-import gr.codehub.ed.technikonweb.Repositories.PropertyRepository;
-import gr.codehub.ed.technikonweb.Repositories.PropertyRepositoryInterface;
-import gr.codehub.ed.technikonweb.Repositories.RepairRepository;
+import gr.codehub.ed.technikonweb.repositories.OwnerRepository;
+import gr.codehub.ed.technikonweb.repositories.OwnerRepositoryInterface;
+import gr.codehub.ed.technikonweb.repositories.PropertyRepository;
+import gr.codehub.ed.technikonweb.repositories.PropertyRepositoryInterface;
+import gr.codehub.ed.technikonweb.repositories.RepairRepository;
 import gr.codehub.ed.technikonweb.models.Owner;
 import gr.codehub.ed.technikonweb.services.IOService;
 import gr.codehub.ed.technikonweb.services.IOServiceInterface;
 import gr.codehub.ed.technikonweb.services.OwnerService;
 import gr.codehub.ed.technikonweb.services.OwnerServiceInterface;
 import static java.io.File.separator;
-import gr.codehub.ed.technikonweb.Repositories.RepairRepositoryInterface;
+import gr.codehub.ed.technikonweb.repositories.RepairRepositoryInterface;
 import gr.codehub.ed.technikonweb.enums.PropertyType;
 import gr.codehub.ed.technikonweb.enums.RepairStatus;
 import gr.codehub.ed.technikonweb.enums.RepairType;
