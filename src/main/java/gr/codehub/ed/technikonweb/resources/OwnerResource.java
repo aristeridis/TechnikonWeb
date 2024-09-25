@@ -7,6 +7,7 @@ import gr.codehub.ed.technikonweb.exceptions.CustomException;
 import gr.codehub.ed.technikonweb.exceptions.OwnerNotFoundException;
 import gr.codehub.ed.technikonweb.exceptions.ResourceNotFoundException;
 import gr.codehub.ed.technikonweb.models.Repair;
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
@@ -22,8 +23,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import lombok.extern.slf4j.Slf4j;
 
-@Path("TechnikonWeb")
+@Path("Owner")
 @Slf4j
+@RequestScoped
 public class OwnerResource {
 
 	@Inject
@@ -35,7 +37,7 @@ public class OwnerResource {
 //        return "Welcome to owner page";
 //    }
 	//get all properties of the owner
-	@Path("owner/{ownerId}")
+	@Path("/{ownerId}")
 	@GET
 	@Produces("text/json")
 	public List<Property> getPropertiesByOwnerId(@PathParam("ownerId") long ownerId) {
@@ -47,7 +49,7 @@ public class OwnerResource {
 		}
 	}
 
-	@Path("owner/property/{propertyId}")
+	@Path("/property/{propertyId}")
 	@GET
 	@Produces("text/json")
 	//details of the property by id
@@ -79,7 +81,7 @@ public class OwnerResource {
 	}
 
 	//property delete
-	@Path("owner/property/{propertyId}")
+	@Path("/property/{propertyId}")
 	@DELETE
 	@Consumes("application/json")
 	@Produces("application/json")
@@ -95,7 +97,7 @@ public class OwnerResource {
 	}
 
 	//update property
-	@Path("owner/property")
+	@Path("/property")
 	@PUT
 	@Consumes("application/json")
 	@Produces("application/json")
@@ -111,7 +113,7 @@ public class OwnerResource {
 	}
 
 	//create property
-	@Path("owner/property")
+	@Path("/property")
 	@POST
 	@Consumes("application/json")
 	@Produces("application/json")
@@ -127,7 +129,7 @@ public class OwnerResource {
 	}
 
 	//create repair
-	@Path("owner/repair")
+	@Path("/repair")
 	@POST
 	@Consumes("application/json")
 	@Produces("application/json")
@@ -145,7 +147,7 @@ public class OwnerResource {
 	}
 
 	//update repair
-	@Path("owner/repair")
+	@Path("/repair")
 	@PUT
 	@Consumes("application/json")
 	@Produces("application/json")
