@@ -13,12 +13,11 @@ import java.util.Scanner;
 import lombok.NoArgsConstructor;
 
 @Slf4j
-@RequestScoped
 @NoArgsConstructor
+@RequestScoped
 public class OwnerService implements OwnerServiceInterface {
-
-	
-	private PropertyRepositoryInterface propertyRepository = new PropertyRepository();
+	@Inject
+	private PropertyRepository propertyRepository;
 
 	@Override
 	public boolean acceptance(Repair repair) {
@@ -31,7 +30,7 @@ public class OwnerService implements OwnerServiceInterface {
 
 	}
 
-	public OwnerService(PropertyRepositoryInterface propertyRepository) {
+	public OwnerService(PropertyRepository propertyRepository) {
 		this.propertyRepository = propertyRepository;
 	}
 
@@ -51,8 +50,9 @@ public class OwnerService implements OwnerServiceInterface {
 	public Optional<Property> updatePorperty(Property property) {
 		return propertyRepository.update(property);
 	}
-	public Optional<Property> saveProperty(Property property){
+
+	public Optional<Property> saveProperty(Property property) {
 		return propertyRepository.save(property);
 	}
-	
+
 }
