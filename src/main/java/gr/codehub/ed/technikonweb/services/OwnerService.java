@@ -9,6 +9,7 @@ import gr.codehub.ed.technikonweb.repositories.PropertyRepository;
 import gr.codehub.ed.technikonweb.repositories.RepairRepository;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import java.util.List;
 import java.util.Optional;
@@ -42,6 +43,7 @@ public class OwnerService implements OwnerServiceInterface {
 //		this.propertyRepository = propertyRepository;
 //	}
 	@Override
+	//@Transactional
 	public List<Property> getPropertiesByOwnerId(Long ownerId) {
 		return propertyRepository.findByOwnerId(ownerId);
 	}
