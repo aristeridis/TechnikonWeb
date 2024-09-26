@@ -17,6 +17,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ *
+ * @author alexandrosaristeridis
+ */
 public class AdminService implements AdminServiceInterface {
 
 	@Inject
@@ -26,6 +30,10 @@ public class AdminService implements AdminServiceInterface {
 	@Inject
 	private PropertyRepository propertyRepository;
 
+	/**
+	 *
+	 * @return
+	 */
 	@Override
 	public List<Repair> getPendingRepairs() {
 		RepairRepository getRepairs = new RepairRepository();
@@ -34,6 +42,11 @@ public class AdminService implements AdminServiceInterface {
 
 	}
 
+	/**
+	 *
+	 * @param repairId
+	 * @param proposedCost
+	 */
 	@Override
 	public void proposeCost(Long repairId, BigDecimal proposedCost) {
 		Repair rp = new Repair();
@@ -43,6 +56,10 @@ public class AdminService implements AdminServiceInterface {
 
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	public List<BigDecimal> getProposedCost() {
 		Repair rp = new Repair();
 		RepairRepository getRepairs = new RepairRepository();
@@ -58,6 +75,12 @@ public class AdminService implements AdminServiceInterface {
 
 	}
 
+	/**
+	 *
+	 * @param proposedDateOfStart
+	 * @param proposedDateOfEnd
+	 * @return
+	 */
 	@Override
 	public List<Optional> proposedStartEndDates(Date proposedDateOfStart, Date proposedDateOfEnd) {
 		RepairRepositoryInterface rri = new RepairRepository();
@@ -65,12 +88,21 @@ public class AdminService implements AdminServiceInterface {
 
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	public List<Repair> getAllRepairs() {
 		RepairRepository getRepairs = new RepairRepository();
 		List<Repair> allRepairs = getRepairs.findAll();
 		return getRepairs.findAll();
 	}
 
+	/**
+	 *
+	 * @param repairId
+	 * @return
+	 */
 	@Override
 	public List<Date> checkActuallDate(Long repairId) {
 		RepairRepository rr = new RepairRepository();
@@ -88,6 +120,13 @@ public class AdminService implements AdminServiceInterface {
 		return rDates;
 	}
 
+	/**
+	 *
+	 * @param repairId
+	 * @param proposedCost
+	 * @param proposedStartDate
+	 * @param proposedEndDate
+	 */
 	public void proposeCostsAndDates(Long repairId, BigDecimal proposedCost, Date proposedStartDate, Date proposedEndDate) {
 		RepairRepositoryInterface rri = new RepairRepository();
 		Optional<Repair> optionalRepair = rri.findById(repairId);
@@ -101,6 +140,11 @@ public class AdminService implements AdminServiceInterface {
 		}
 	}
 
+	/**
+	 *
+	 * @param repair
+	 * @return
+	 */
 	public Optional<Repair> createRepair(Repair repair) {
 		try {
 			return repairRepository.save(repair);
@@ -110,40 +154,93 @@ public class AdminService implements AdminServiceInterface {
 
 	}
 
+	/**
+	 *
+	 * @param repair
+	 * @return
+	 */
 	public Optional<Repair> updateRepair(Repair repair) {
 		return repairRepository.update(repair);
 	}
 
+	/**
+	 *
+	 * @param date
+	 * @return
+	 */
 	public List<Repair> findByDate(Date date) {
 		return repairRepository.findByDate(date);
 	}
 
+	/**
+	 *
+	 * @param dateStart
+	 * @param dateEnd
+	 * @return
+	 */
 	public List<Repair> findByRangeOfDates(Date dateStart, Date dateEnd) {
 		return repairRepository.findByRangeDates(dateStart, dateEnd);
 	}
 
+	/**
+	 *
+	 * @param propertyId
+	 * @return
+	 */
 	public List<Repair> findByPropertyId(Long propertyId) {
 		return repairRepository.findByPropertyId(propertyId);
 	}
 
+	/**
+	 *
+	 * @param vatNumber
+	 * @return
+	 */
 	public Optional<Owner> findByVatNumber(Long vatNumber) {
 		return ownerRepository.findByVatNumber(vatNumber);
 	}
 	
-
+	/**
+	 *
+	 * @param email
+	 * @return
+	 */
 	public Optional<Owner> findOwnerByEmail(String email) {
 		return ownerRepository.findByEmail(email);
 	}
 
+	/**
+	 *
+	 * @param property
+	 * @return
+	 */
 	public Optional<Property> createProperty(Property property) {
 		return propertyRepository.save(property);
 	}
+
+	/**
+	 *
+	 * @param property
+	 * @return
+	 */
 	public Optional<Property> updateProperty(Property property) {
 		return propertyRepository.update(property);
 	}
+
+	/**
+	 *
+	 * @param propertyId
+	 * @return
+	 */
 	public Optional<Property> findPropertyById(Long propertyId) {
 		return propertyRepository.findById(propertyId);
 	}
+
+	/**
+	 *
+	 * @param ownerId
+	 * @return
+	 */
 	public List<Property> findPropertyByOwnerId(Long ownerId) {
 		return propertyRepository.findByOwnerId(ownerId);
 }

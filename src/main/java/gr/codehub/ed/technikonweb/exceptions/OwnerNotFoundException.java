@@ -1,8 +1,16 @@
 package gr.codehub.ed.technikonweb.exceptions;
 
+/**
+ *
+ * @author alexandrosaristeridis
+ */
 public class OwnerNotFoundException extends RuntimeException {
 
-    public OwnerNotFoundException(String message) {
+	/**
+	 *
+	 * @param message
+	 */
+	public OwnerNotFoundException(String message) {
         super(message);
     }
 }

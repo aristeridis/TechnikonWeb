@@ -7,11 +7,20 @@ import jakarta.ws.rs.container.ContainerResponseFilter;
 import jakarta.ws.rs.ext.Provider;
 import java.io.IOException;
 
- 
+/**
+ *
+ * @author alexandrosaristeridis
+ */
 @Provider
 public class CorsManagement implements ContainerResponseFilter {
 
-    @Override
+	/**
+	 *
+	 * @param requestContext
+	 * @param responseContext
+	 * @throws IOException
+	 */
+	@Override
     public void filter(ContainerRequestContext requestContext,
                        ContainerResponseContext responseContext ) throws IOException {
         responseContext.getHeaders().add("Access-Control-Allow-Origin", "*");

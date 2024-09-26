@@ -16,6 +16,10 @@ import java.util.List;
 import java.util.Optional;
 import lombok.NoArgsConstructor;
 
+/**
+ *
+ * @author alexandrosaristeridis
+ */
 @Slf4j
 @RequestScoped
 @NoArgsConstructor
@@ -24,6 +28,11 @@ public class PropertyRepository implements PropertyRepositoryInterface<Property,
 	@PersistenceContext(unitName = "Persistence")
 	private EntityManager entityManager;
 
+	/**
+	 *
+	 * @param propertyId
+	 * @return
+	 */
 	@Override
 	public Optional<Property> findById(Long propertyId) {
 		try {
@@ -37,6 +46,11 @@ public class PropertyRepository implements PropertyRepositoryInterface<Property,
 		return Optional.empty();
 	}
 
+	/**
+	 *
+	 * @param ownerId
+	 * @return
+	 */
 	@Override
 	public List<Property> findByOwnerId(Long ownerId) {
 		try {
@@ -51,6 +65,10 @@ public class PropertyRepository implements PropertyRepositoryInterface<Property,
 		return List.of();
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	@Override
 	@Transactional
 	public List<Property> findAll() {
@@ -64,6 +82,11 @@ public class PropertyRepository implements PropertyRepositoryInterface<Property,
 		}
 	}
 
+	/**
+	 *
+	 * @param property
+	 * @return
+	 */
 	@Override
 	@Transactional
 	public Optional<Property> save(Property property) {
@@ -76,6 +99,11 @@ public class PropertyRepository implements PropertyRepositoryInterface<Property,
 		return Optional.empty();
 	}
 
+	/**
+	 *
+	 * @param propertyId
+	 * @return
+	 */
 	@Override
 	@Transactional
 	public boolean deleteById(Long propertyId) {
@@ -91,6 +119,11 @@ public class PropertyRepository implements PropertyRepositoryInterface<Property,
 		return false;
 	}
 
+	/**
+	 *
+	 * @param propertyId
+	 * @return
+	 */
 	@Override
 	@Transactional
 	public boolean safeDeleteById(Long propertyId) {
@@ -107,6 +140,11 @@ public class PropertyRepository implements PropertyRepositoryInterface<Property,
 		return false;
 	}
 
+	/**
+	 *
+	 * @param property
+	 * @return
+	 */
 	@Override
 	public Optional<Property> update(Property property) {
 		try {

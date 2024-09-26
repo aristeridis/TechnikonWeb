@@ -1,8 +1,16 @@
 package gr.codehub.ed.technikonweb.exceptions;
 
+/**
+ *
+ * @author alexandrosaristeridis
+ */
 public class ResourceNotFoundException extends RuntimeException {
 
-    public ResourceNotFoundException(String message) {
+	/**
+	 *
+	 * @param message
+	 */
+	public ResourceNotFoundException(String message) {
         super(message);
     }
 }

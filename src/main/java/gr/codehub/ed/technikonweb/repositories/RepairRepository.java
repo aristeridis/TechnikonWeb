@@ -15,6 +15,10 @@ import java.util.List;
 import java.util.Optional;
 import lombok.NoArgsConstructor;
 
+/**
+ *
+ * @author alexandrosaristeridis
+ */
 @Slf4j
 @RequestScoped
 @NoArgsConstructor
@@ -23,6 +27,11 @@ public class RepairRepository implements RepairRepositoryInterface<Repair, Long,
 	@PersistenceContext(unitName = "Persistence")
 	private EntityManager entityManager;
 
+	/**
+	 *
+	 * @param repairId
+	 * @return
+	 */
 	@Override
 	public Optional<Repair> findById(Long repairId) {
 		try {
@@ -35,6 +44,11 @@ public class RepairRepository implements RepairRepositoryInterface<Repair, Long,
 		return Optional.empty();
 	}
 
+	/**
+	 *
+	 * @param propertyId
+	 * @return
+	 */
 	@Override
 	public List<Repair> findByPropertyId(Long propertyId) {
 		try {
@@ -49,6 +63,11 @@ public class RepairRepository implements RepairRepositoryInterface<Repair, Long,
 		return List.of();
 	}
 
+	/**
+	 *
+	 * @param dateOfStart
+	 * @return
+	 */
 	@Override
 	public List<Repair> findByDate(Date dateOfStart) {
 		try {
@@ -62,6 +81,12 @@ public class RepairRepository implements RepairRepositoryInterface<Repair, Long,
 		return List.of();
 	}
 
+	/**
+	 *
+	 * @param dateOfStart
+	 * @param dateOfEnd
+	 * @return
+	 */
 	@Override
 	public List<Repair> findByRangeDates(Date dateOfStart, Date dateOfEnd) {
 		try {
@@ -76,6 +101,10 @@ public class RepairRepository implements RepairRepositoryInterface<Repair, Long,
 		return List.of();
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	@Override
 	@Transactional
 	public List<Repair> findAll() {
@@ -89,6 +118,11 @@ public class RepairRepository implements RepairRepositoryInterface<Repair, Long,
 		return List.of();
 	}
 
+	/**
+	 *
+	 * @param repair
+	 * @return
+	 */
 	@Override
 	@Transactional
 	public Optional<Repair> save(Repair repair) {
@@ -101,6 +135,11 @@ public class RepairRepository implements RepairRepositoryInterface<Repair, Long,
 		return Optional.empty();
 	}
 
+	/**
+	 *
+	 * @param repair
+	 * @return
+	 */
 	@Override
 	public Optional<Repair> update(Repair repair) {
 		try {
@@ -112,6 +151,11 @@ public class RepairRepository implements RepairRepositoryInterface<Repair, Long,
 		return Optional.empty();
 	}
 
+	/**
+	 *
+	 * @param repairId
+	 * @return
+	 */
 	@Override
 	@Transactional
 	public boolean deleteById(Long repairId) {
@@ -127,6 +171,11 @@ public class RepairRepository implements RepairRepositoryInterface<Repair, Long,
 		return false;
 	}
 
+	/**
+	 *
+	 * @param repairId
+	 * @return
+	 */
 	@Override
 	@Transactional
 	public boolean safeDeleteById(Long repairId) {

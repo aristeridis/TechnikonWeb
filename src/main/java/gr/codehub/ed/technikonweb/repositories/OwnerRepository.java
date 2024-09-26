@@ -14,6 +14,10 @@ import java.util.List;
 import java.util.Optional;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ *
+ * @author alexandrosaristeridis
+ */
 @Slf4j
 @RequestScoped
 public class OwnerRepository implements OwnerRepositoryInterface<Owner, Long, String> {
@@ -21,6 +25,11 @@ public class OwnerRepository implements OwnerRepositoryInterface<Owner, Long, St
 	@PersistenceContext(unitName = "Persistence")
 	private EntityManager entityManager;
 
+	/**
+	 *
+	 * @param ownerId
+	 * @return
+	 */
 	@Override
 	public Optional<Owner> findByOwnerId(Long ownerId) {
 		try {
@@ -33,6 +42,11 @@ public class OwnerRepository implements OwnerRepositoryInterface<Owner, Long, St
 		return Optional.empty();
 	}
 
+	/**
+	 *
+	 * @param vatNumber
+	 * @return
+	 */
 	@Override
 	@Transactional
 	public Optional<Owner> findByVatNumber(Long vatNumber) {
@@ -49,6 +63,11 @@ public class OwnerRepository implements OwnerRepositoryInterface<Owner, Long, St
 		return Optional.empty();
 	}
 
+	/**
+	 *
+	 * @param email
+	 * @return
+	 */
 	@Override
 	@Transactional
 	public Optional<Owner> findByEmail(String email) {
@@ -64,6 +83,11 @@ public class OwnerRepository implements OwnerRepositoryInterface<Owner, Long, St
 		return Optional.empty();
 	}
 
+	/**
+	 *
+	 * @param owner
+	 * @return
+	 */
 	@Override
 	@Transactional
 	public Optional<Owner> save(Owner owner) {
@@ -76,6 +100,11 @@ public class OwnerRepository implements OwnerRepositoryInterface<Owner, Long, St
 		return Optional.empty();
 	}
 
+	/**
+	 *
+	 * @param ownerId
+	 * @return
+	 */
 	@Override
 	@Transactional
 	public boolean deleteById(Long ownerId) {
@@ -92,6 +121,11 @@ public class OwnerRepository implements OwnerRepositoryInterface<Owner, Long, St
 		return false;
 	}
 
+	/**
+	 *
+	 * @return
+	 * @throws ResourceNotFoundException
+	 */
 	@Override
 	@Transactional
 	public List<Owner> findAll() throws ResourceNotFoundException {
@@ -111,6 +145,11 @@ public class OwnerRepository implements OwnerRepositoryInterface<Owner, Long, St
 		return Owner.class;
 	}
 
+	/**
+	 *
+	 * @param ownerId
+	 * @return
+	 */
 	@Override
 	@Transactional
 	public boolean safeDeleteById(Long ownerId) {
@@ -128,6 +167,11 @@ public class OwnerRepository implements OwnerRepositoryInterface<Owner, Long, St
 		return false;
 	}
 
+	/**
+	 *
+	 * @param owner
+	 * @return
+	 */
 	@Override
 	@Transactional
 	public Optional<Owner> update(Owner owner) {

@@ -6,14 +6,38 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ *
+ * @author alexandrosaristeridis
+ */
 public interface AdminServiceInterface {
 
-    List<Repair> getPendingRepairs();
+	/**
+	 *
+	 * @return
+	 */
+	List<Repair> getPendingRepairs();
 
-    void proposeCost(Long repairId, BigDecimal proposedCost);
+	/**
+	 *
+	 * @param repairId
+	 * @param proposedCost
+	 */
+	void proposeCost(Long repairId, BigDecimal proposedCost);
 
-    List<Optional> proposedStartEndDates(Date proposedDateOfStart, Date proposedDateOfEnd);
+	/**
+	 *
+	 * @param proposedDateOfStart
+	 * @param proposedDateOfEnd
+	 * @return
+	 */
+	List<Optional> proposedStartEndDates(Date proposedDateOfStart, Date proposedDateOfEnd);
 
-    List<Date> checkActuallDate(Long repairId);
+	/**
+	 *
+	 * @param repairId
+	 * @return
+	 */
+	List<Date> checkActuallDate(Long repairId);
 
 }

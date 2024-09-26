@@ -23,6 +23,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
+/**
+ *
+ * @author alexandrosaristeridis
+ */
 @Slf4j
 public class IOService implements IOServiceInterface {
 
@@ -32,7 +36,13 @@ public class IOService implements IOServiceInterface {
 
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-MM-yyyy");
 
-    public IOService(OwnerRepositoryInterface<Owner, Long, String> ownerRepository,
+	/**
+	 *
+	 * @param ownerRepository
+	 * @param propertyRepository
+	 * @param repairRepository
+	 */
+	public IOService(OwnerRepositoryInterface<Owner, Long, String> ownerRepository,
             PropertyRepositoryInterface<Property, Long> propertyRepository,
             RepairRepositoryInterface<Repair, Long, Date> repairRepository) {
         this.ownerRepository = ownerRepository;
@@ -40,7 +50,11 @@ public class IOService implements IOServiceInterface {
         this.repairRepository = repairRepository;
     }
 
-    @Override
+	/**
+	 *
+	 * @param filename
+	 */
+	@Override
     public void saveOwnersToCsv(String filename) {
         try {
             List<Owner> ownerList = ownerRepository.findAll();
@@ -65,7 +79,11 @@ public class IOService implements IOServiceInterface {
         }
     }
 
-    @Override
+	/**
+	 *
+	 * @param filename
+	 */
+	@Override
     public void savePropertiesToCsv(String filename) {
         List<Property> propertyList = propertyRepository.findAll();
         try (PrintWriter pw = new PrintWriter(new File(filename))) {
@@ -83,7 +101,11 @@ public class IOService implements IOServiceInterface {
         }
     }
 
-    @Override
+	/**
+	 *
+	 * @param filename
+	 */
+	@Override
     public void saveRepairsToCsv(String filename) {
         List<Repair> repairList = repairRepository.findAll();
         try (PrintWriter pw = new PrintWriter(new File(filename))) {
@@ -109,7 +131,12 @@ public class IOService implements IOServiceInterface {
         }
     }
 
-    @Override
+	/**
+	 *
+	 * @param filename
+	 * @return
+	 */
+	@Override
     public int readOwnersCsv(String filename) {
         int rowsRead = 0;
         try (Scanner scanner = new Scanner(new File(filename))) {
@@ -136,7 +163,12 @@ public class IOService implements IOServiceInterface {
         return rowsRead;
     }
 
-    @Override
+	/**
+	 *
+	 * @param filename
+	 * @return
+	 */
+	@Override
     public int readPropertiesCsv(String filename) {
         int rowsRead = 0;
         try (Scanner scanner = new Scanner(new File(filename))) {
@@ -165,7 +197,12 @@ public class IOService implements IOServiceInterface {
         return rowsRead;
     }
 
-    @Override
+	/**
+	 *
+	 * @param filename
+	 * @return
+	 */
+	@Override
     public int readRepairsFromCsv(String filename) {
         int rowsRead = 0;
         try (Scanner scanner = new Scanner(new File(filename))) {

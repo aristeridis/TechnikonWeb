@@ -16,6 +16,10 @@ import java.util.Optional;
 import java.util.Scanner;
 import lombok.NoArgsConstructor;
 
+/**
+ *
+ * @author alexandrosaristeridis
+ */
 @Slf4j
 @NoArgsConstructor
 @RequestScoped
@@ -28,6 +32,11 @@ public class OwnerService implements OwnerServiceInterface {
 	@Inject
 	private OwnerRepository ownerRepository;
 
+	/**
+	 *
+	 * @param repair
+	 * @return
+	 */
 	@Override
 	public boolean acceptance(Repair repair) {
 		System.out.println(repair.toString());
@@ -42,40 +51,86 @@ public class OwnerService implements OwnerServiceInterface {
 //	public OwnerService(PropertyRepository propertyRepository) {
 //		this.propertyRepository = propertyRepository;
 //	}
+
+	/**
+	 *
+	 * @param ownerId
+	 * @return
+	 */
 	@Override
 	//@Transactional
 	public List<Property> getPropertiesByOwnerId(Long ownerId) {
 		return propertyRepository.findByOwnerId(ownerId);
 	}
 
+	/**
+	 *
+	 * @param propertyId
+	 * @return
+	 */
 	public Optional<Property> findById(Long propertyId) {
 		return propertyRepository.findById(propertyId);
 	}
 
+	/**
+	 *
+	 * @param propertyId
+	 * @return
+	 */
 	public boolean safeDeleteById(Long propertyId) {
 		return propertyRepository.safeDeleteById(propertyId);
 	}
 
+	/**
+	 *
+	 * @param property
+	 * @return
+	 */
 	public Optional<Property> updatePorperty(Property property) {
 		return propertyRepository.update(property);
 	}
 
+	/**
+	 *
+	 * @param property
+	 * @return
+	 */
 	public Optional<Property> saveProperty(Property property) {
 		return propertyRepository.save(property);
 	}
 
+	/**
+	 *
+	 * @param repairId
+	 * @return
+	 */
 	public Optional<Repair> findRepairById(Long repairId) {
 		return repairRepository.findById(repairId);
 	}
 
+	/**
+	 *
+	 * @param repair
+	 * @return
+	 */
 	public Optional<Repair> createRepair(Repair repair) {
 		return repairRepository.save(repair);
 	}
 
+	/**
+	 *
+	 * @param repair
+	 * @return
+	 */
 	public Optional<Repair> updateRepair(Repair repair) {
 		return repairRepository.update(repair);
 	}
 
+	/**
+	 *
+	 * @param repairId
+	 * @return
+	 */
 	public boolean deleteRepairById(Long repairId) {
 		try {
 			repairRepository.safeDeleteById(repairId);
@@ -86,10 +141,20 @@ public class OwnerService implements OwnerServiceInterface {
 		return false;
 	}
 
+	/**
+	 *
+	 * @param owner
+	 * @return
+	 */
 	public Optional<Owner> updateOwner(Owner owner) {
 		return ownerRepository.update(owner);
 	}
 
+	/**
+	 *
+	 * @param ownerId
+	 * @return
+	 */
 	public boolean deleteOwnerById(Long ownerId) {
 		try {
 			ownerRepository.safeDeleteById(ownerId);

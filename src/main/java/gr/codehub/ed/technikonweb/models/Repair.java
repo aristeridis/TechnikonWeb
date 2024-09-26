@@ -15,6 +15,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ *
+ * @author alexandrosaristeridis
+ */
 @Entity
 @Setter
 @Getter
@@ -65,7 +69,11 @@ public class Repair {
     @JoinColumn(name = "propertyId")
     private Property property;
 
-    @Override
+	/**
+	 *
+	 * @return
+	 */
+	@Override
     public String toString() {
         return "Repair{" + "repairId=" + repairId + ", repairType=" + repairType + ", shortDescription=" + shortDescription + ", dateOfSubmission=" + dateOfSubmission + ", descriptionOfWork=" + descriptionOfWork + ", proposedDateOfStart=" + proposedDateOfStart + ", proposedDateOfEnd=" + proposedDateOfEnd + ", proposedCost=" + proposedCost + ", acceptance=" + acceptance + ", repairStatus=" + repairStatus + ", dateOfStart=" + dateOfStart + ", dateOfEnd=" + dateOfEnd + ", property=" + property + '}';
     }

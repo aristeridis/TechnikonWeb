@@ -1,8 +1,16 @@
 package gr.codehub.ed.technikonweb.exceptions;
 
+/**
+ *
+ * @author alexandrosaristeridis
+ */
 public class ValidationException extends RuntimeException {
 
-    public ValidationException(String message) {
+	/**
+	 *
+	 * @param message
+	 */
+	public ValidationException(String message) {
         super(message);
     }
 }

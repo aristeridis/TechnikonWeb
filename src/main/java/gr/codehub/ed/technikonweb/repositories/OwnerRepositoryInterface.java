@@ -5,24 +5,70 @@ import jakarta.enterprise.context.RequestScoped;
 import java.util.List;
 import java.util.Optional;
 
-
+/**
+ *
+ * @author alexandrosaristeridis
+ * @param <T>
+ * @param <K>
+ * @param <S>
+ */
 @RequestScoped
 public interface OwnerRepositoryInterface<T, K, S> {
 
-    Optional<T> findByOwnerId(K id);
+	/**
+	 *
+	 * @param id
+	 * @return
+	 */
+	Optional<T> findByOwnerId(K id);
 
-    Optional<T> findByVatNumber(K vt);
+	/**
+	 *
+	 * @param vt
+	 * @return
+	 */
+	Optional<T> findByVatNumber(K vt);
 
-    Optional<T> findByEmail(S s);
+	/**
+	 *
+	 * @param s
+	 * @return
+	 */
+	Optional<T> findByEmail(S s);
 
-    List<T> findAll() throws ResourceNotFoundException;
+	/**
+	 *
+	 * @return
+	 * @throws ResourceNotFoundException
+	 */
+	List<T> findAll() throws ResourceNotFoundException;
 
-    Optional<T> save(T t);
+	/**
+	 *
+	 * @param t
+	 * @return
+	 */
+	Optional<T> save(T t);
 
-    boolean deleteById(K id);
+	/**
+	 *
+	 * @param id
+	 * @return
+	 */
+	boolean deleteById(K id);
 
-    boolean safeDeleteById(K id);
+	/**
+	 *
+	 * @param id
+	 * @return
+	 */
+	boolean safeDeleteById(K id);
 
-    Optional<T> update(T t);
+	/**
+	 *
+	 * @param t
+	 * @return
+	 */
+	Optional<T> update(T t);
 
 }

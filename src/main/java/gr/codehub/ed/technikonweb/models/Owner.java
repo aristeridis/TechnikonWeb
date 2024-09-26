@@ -11,6 +11,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ *
+ * @author alexandrosaristeridis
+ */
 @Entity
 @Setter
 @Getter
@@ -52,7 +56,11 @@ public class Owner {
     @Column(nullable = false)
     private boolean deletedOwner = false;
 
-    @Override
+	/**
+	 *
+	 * @return
+	 */
+	@Override
     public String toString() {
         return "Owner{" + "OwnerId=" + OwnerId + ", VatNumber=" + VatNumber + ", Name=" + Name + ", SurName=" + SurName + ", Address=" + Address + ", PhoneNumber=" + PhoneNumber + ", Email=" + Email + ", Username=" + Username + ", password=" + password + ", propertyList=" + propertyList + ", deletedOwner=" + deletedOwner + '}';
     }

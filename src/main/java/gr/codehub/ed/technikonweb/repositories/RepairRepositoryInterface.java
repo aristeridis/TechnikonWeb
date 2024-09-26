@@ -4,26 +4,77 @@ import jakarta.enterprise.context.RequestScoped;
 import java.util.List;
 import java.util.Optional;
 
-
+/**
+ *
+ * @author alexandrosaristeridis
+ * @param <T>
+ * @param <K>
+ * @param <D>
+ */
 @RequestScoped
 public interface RepairRepositoryInterface<T, K, D> {
 
-    Optional<T> findById(K repairId);
+	/**
+	 *
+	 * @param repairId
+	 * @return
+	 */
+	Optional<T> findById(K repairId);
 
-    List<T> findByPropertyId(K propertyId);
+	/**
+	 *
+	 * @param propertyId
+	 * @return
+	 */
+	List<T> findByPropertyId(K propertyId);
 
-    List<T> findByDate(D date);
+	/**
+	 *
+	 * @param date
+	 * @return
+	 */
+	List<T> findByDate(D date);
 
-    List<T> findByRangeDates(D date1, D date2);
+	/**
+	 *
+	 * @param date1
+	 * @param date2
+	 * @return
+	 */
+	List<T> findByRangeDates(D date1, D date2);
 
-    List<T> findAll();
+	/**
+	 *
+	 * @return
+	 */
+	List<T> findAll();
 
-    Optional<T> update(T t);
+	/**
+	 *
+	 * @param t
+	 * @return
+	 */
+	Optional<T> update(T t);
 
-    Optional<T> save(T t);
+	/**
+	 *
+	 * @param t
+	 * @return
+	 */
+	Optional<T> save(T t);
 
-    boolean deleteById(K repairId);
+	/**
+	 *
+	 * @param repairId
+	 * @return
+	 */
+	boolean deleteById(K repairId);
 
-    boolean safeDeleteById(K repairId);
+	/**
+	 *
+	 * @param repairId
+	 * @return
+	 */
+	boolean safeDeleteById(K repairId);
 
 }

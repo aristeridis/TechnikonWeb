@@ -11,7 +11,11 @@ import jakarta.ws.rs.core.Response;
 @Path("gen")
 public class JakartaEE11Resource {
     
-    @GET
+	/**
+	 *
+	 * @return
+	 */
+	@GET
     public Response ping(){
         return Response
                 .ok("ping Jakarta EE")

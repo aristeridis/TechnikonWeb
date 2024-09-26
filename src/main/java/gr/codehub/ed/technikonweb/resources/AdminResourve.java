@@ -22,6 +22,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ *
+ * @author alexandrosaristeridis
+ */
 @Path("Admin")
 @Slf4j
 @RequestScoped
@@ -30,6 +34,10 @@ public class AdminResourve {
 	@Inject
 	private AdminService technikonService;
 
+	/**
+	 *
+	 * @return
+	 */
 	@Path("")
 	@GET
 	@Consumes("application/json")
@@ -44,6 +52,11 @@ public class AdminResourve {
 		return null;
 	}
 
+	/**
+	 *
+	 * @param repair
+	 * @return
+	 */
 	@Path("/repair")
 	@POST
 	@Consumes("application/json")
@@ -61,6 +74,11 @@ public class AdminResourve {
 		return Optional.empty();
 	}
 
+	/**
+	 *
+	 * @param repair
+	 * @return
+	 */
 	@Path("/repair")
 	@PUT
 	@Consumes("application/json")
@@ -77,6 +95,11 @@ public class AdminResourve {
 		return Optional.empty();
 	}
 
+	/**
+	 *
+	 * @param date
+	 * @return
+	 */
 	@Path("/repair/{repairDate}")
 	@GET
 	@Consumes("application/json")
@@ -91,6 +114,12 @@ public class AdminResourve {
 		return null;
 	}
 
+	/**
+	 *
+	 * @param dateStart
+	 * @param dateEnd
+	 * @return
+	 */
 	@Path("/repair/{repairDates}")
 	@GET
 	@Consumes("application/json")
@@ -105,6 +134,11 @@ public class AdminResourve {
 		return null;
 	}
 
+	/**
+	 *
+	 * @param propertyId
+	 * @return
+	 */
 	@Path("/repair/{propertyId}")
 	@GET
 	@Consumes("application/json")
@@ -119,6 +153,11 @@ public class AdminResourve {
 		return null;
 	}
 
+	/**
+	 *
+	 * @param vatNumber
+	 * @return
+	 */
 	@Path("/owner/{vatNumber}")
 	@GET
 	@Consumes("application/json")
@@ -133,6 +172,11 @@ public class AdminResourve {
 		return Optional.empty();
 	}
 
+	/**
+	 *
+	 * @param email
+	 * @return
+	 */
 	@Path("/owner/{email}")
 	@GET
 	@Consumes("application/json")
@@ -147,6 +191,11 @@ public class AdminResourve {
 		return Optional.empty();
 	}
 
+	/**
+	 *
+	 * @param property
+	 * @return
+	 */
 	@Path("/property")
 	@POST
 	@Consumes("application/json")
@@ -162,6 +211,11 @@ public class AdminResourve {
 		return Optional.empty();
 	}
 
+	/**
+	 *
+	 * @param property
+	 * @return
+	 */
 	@Path("/property")
 	@PUT
 	@Consumes("application/json")
@@ -177,6 +231,11 @@ public class AdminResourve {
 		return Optional.empty();
 	}
 
+	/**
+	 *
+	 * @param propertyId
+	 * @return
+	 */
 	@Path("/property/{propertyId}")
 	@GET
 	@Consumes("application/json")
@@ -190,6 +249,12 @@ public class AdminResourve {
 		}
 		return Optional.empty();
 	}
+
+	/**
+	 *
+	 * @param vatNumber
+	 * @return
+	 */
 	@Path("/property/{vatNumber}")
 	@GET
 	@Consumes("application/json")

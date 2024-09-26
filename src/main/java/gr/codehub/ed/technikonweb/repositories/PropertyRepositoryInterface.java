@@ -3,20 +3,61 @@ package gr.codehub.ed.technikonweb.repositories;
 import jakarta.enterprise.context.RequestScoped;
 import java.util.List;
 import java.util.Optional;
+
+/**
+ *
+ * @author alexandrosaristeridis
+ * @param <T>
+ * @param <K>
+ */
 @RequestScoped
 public interface PropertyRepositoryInterface<T, K> {
 
-    Optional<T> findById(K id);
+	/**
+	 *
+	 * @param id
+	 * @return
+	 */
+	Optional<T> findById(K id);
 
-    List<T> findByOwnerId(K ownerId);
+	/**
+	 *
+	 * @param ownerId
+	 * @return
+	 */
+	List<T> findByOwnerId(K ownerId);
 
-    List<T> findAll();
+	/**
+	 *
+	 * @return
+	 */
+	List<T> findAll();
 
-    Optional<T> save(T property);
+	/**
+	 *
+	 * @param property
+	 * @return
+	 */
+	Optional<T> save(T property);
 
-    boolean deleteById(K id);
+	/**
+	 *
+	 * @param id
+	 * @return
+	 */
+	boolean deleteById(K id);
 
-    boolean safeDeleteById(K id);
+	/**
+	 *
+	 * @param id
+	 * @return
+	 */
+	boolean safeDeleteById(K id);
 
-    Optional<T> update(T entity);
+	/**
+	 *
+	 * @param entity
+	 * @return
+	 */
+	Optional<T> update(T entity);
 }

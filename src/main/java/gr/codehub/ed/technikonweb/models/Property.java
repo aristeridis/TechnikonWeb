@@ -14,6 +14,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ *
+ * @author alexandrosaristeridis
+ */
 @Entity
 @Setter
 @Getter
@@ -42,7 +46,15 @@ public class Property {
     @Column(name = "is_deleted")
     private boolean deletedProperty;
 
-    public Property(long propertyCode, String address, int yearOfConstruction, PropertyType propertyType, Owner owner) {
+	/**
+	 *
+	 * @param propertyCode
+	 * @param address
+	 * @param yearOfConstruction
+	 * @param propertyType
+	 * @param owner
+	 */
+	public Property(long propertyCode, String address, int yearOfConstruction, PropertyType propertyType, Owner owner) {
 //        this.E9 = E9;
         this.address = address;
         this.yearOfConstruction = yearOfConstruction;
