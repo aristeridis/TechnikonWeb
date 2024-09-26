@@ -30,7 +30,6 @@ public class RepairRepository implements RepairRepositoryInterface<Repair, Long,
 			return Optional.ofNullable(repair);
 		} catch (ResourceNotFoundException rnfe) {
 			//log.debug("Could not find Property with ID: " + repairId);
-			entityManager.getTransaction().rollback();
 			System.out.println(rnfe.getMessage());
 		}
 		return Optional.empty();
@@ -39,17 +38,12 @@ public class RepairRepository implements RepairRepositoryInterface<Repair, Long,
 	@Override
 	public List<Repair> findByPropertyId(Long propertyId) {
 		try {
-			entityManager.getTransaction().begin();
 			TypedQuery<Repair> query = entityManager.createQuery(
 				"SELECT repair FROM Repair repair WHERE repair.property.propertyId = :propertyId", Repair.class);
 			query.setParameter("propertyId", propertyId);
 			List<Repair> repairs = query.getResultList();
-			entityManager.getTransaction().commit();
 			return repairs;
 		} catch (Exception e) {
-			if (entityManager.getTransaction().isActive()) {
-				entityManager.getTransaction().rollback();
-			}
 			log.error("Error finding repairs by Property ID: " + propertyId, e);
 		}
 		return List.of();
@@ -58,14 +52,11 @@ public class RepairRepository implements RepairRepositoryInterface<Repair, Long,
 	@Override
 	public List<Repair> findByDate(Date dateOfStart) {
 		try {
-			entityManager.getTransaction().begin();
 			TypedQuery<Repair> query = entityManager.createQuery("SELECT repair FROM Repair repair WHERE repair.dateOfStart = :dateOfStart", Repair.class);
 			query.setParameter("dateOfStart", dateOfStart);
 			List<Repair> repairs = query.getResultList();
-			entityManager.getTransaction().commit();
 			return repairs;
 		} catch (Exception e) {
-			entityManager.getTransaction().rollback();
 			log.error("Error finding repairs by date: " + dateOfStart, e);
 		}
 		return List.of();
@@ -74,15 +65,12 @@ public class RepairRepository implements RepairRepositoryInterface<Repair, Long,
 	@Override
 	public List<Repair> findByRangeDates(Date dateOfStart, Date dateOfEnd) {
 		try {
-			entityManager.getTransaction().begin();
 			TypedQuery<Repair> query = entityManager.createQuery("SELECT repair FROM Repair repair WHERE repair.dateOfSubmission BETWEEN :dateOfStart AND :dateOfEnd", Repair.class);
 			query.setParameter("dateOfStart", dateOfStart);
 			query.setParameter("dateOfEnd", dateOfEnd);
 			List<Repair> repairs = query.getResultList();
-			entityManager.getTransaction().commit();
 			return repairs;
 		} catch (Exception e) {
-			entityManager.getTransaction().rollback();
 			log.error("Error finding repairs by date range: " + dateOfStart + " to " + dateOfEnd, e);
 		}
 		return List.of();
@@ -105,12 +93,9 @@ public class RepairRepository implements RepairRepositoryInterface<Repair, Long,
 	@Transactional
 	public Optional<Repair> save(Repair repair) {
 		try {
-			entityManager.getTransaction().begin();
 			entityManager.persist(repair);
-			entityManager.getTransaction().commit();
 			return Optional.of(repair);
 		} catch (Exception e) {
-			entityManager.getTransaction().rollback();
 			log.error("Error saving repair: " + repair, e);
 		}
 		return Optional.empty();
@@ -119,12 +104,9 @@ public class RepairRepository implements RepairRepositoryInterface<Repair, Long,
 	@Override
 	public Optional<Repair> update(Repair repair) {
 		try {
-			entityManager.getTransaction().begin();
 			repair = entityManager.merge(repair);
-			entityManager.getTransaction().commit();
 			return Optional.of(repair);
 		} catch (Exception e) {
-			entityManager.getTransaction().rollback();
 			log.error("Error updating repair: " + repair, e);
 		}
 		return Optional.empty();
@@ -136,13 +118,10 @@ public class RepairRepository implements RepairRepositoryInterface<Repair, Long,
 		try {
 			Repair repair = entityManager.find(Repair.class, repairId);
 			if (repair != null) {
-				entityManager.getTransaction().begin();
 				entityManager.remove(repair);
-				entityManager.getTransaction().commit();
 				return true;
 			}
 		} catch (Exception e) {
-			entityManager.getTransaction().rollback();
 			log.error("Error deleting repair with ID: " + repairId, e);
 		}
 		return false;
@@ -154,14 +133,11 @@ public class RepairRepository implements RepairRepositoryInterface<Repair, Long,
 		try {
 			Repair repair = entityManager.find(Repair.class, repairId);
 			if (repair != null) {
-				entityManager.getTransaction().begin();
 				repair.setDeletedRepair(true);
 				entityManager.merge(repair);
-				entityManager.getTransaction().commit();
 				return true;
 			}
 		} catch (Exception e) {
-			entityManager.getTransaction().rollback();
 			log.error("Error safely deleting repair with ID: " + repairId, e);
 		}
 		return false;

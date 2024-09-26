@@ -40,15 +40,12 @@ public class PropertyRepository implements PropertyRepositoryInterface<Property,
 	@Override
 	public List<Property> findByOwnerId(Long ownerId) {
 		try {
-			entityManager.getTransaction().begin();
 			TypedQuery<Property> query = entityManager.createQuery(
 				"SELECT p FROM Property p WHERE p.owner.OwnerId = :ownerId", Property.class); //paizei na einai ownerId
 			query.setParameter("ownerId", ownerId);
-			entityManager.getTransaction().commit();
 			return query.getResultList();
 		} catch (OwnerNotFoundException oe) {
 			log.debug("Could not find Properties for Owner ID: " + ownerId);
-			entityManager.getTransaction().rollback();
 			System.out.println(oe.getMessage());
 		}
 		return List.of();
@@ -71,13 +68,10 @@ public class PropertyRepository implements PropertyRepositoryInterface<Property,
 	@Transactional
 	public Optional<Property> save(Property property) {
 		try {
-			entityManager.getTransaction().begin();
 			entityManager.persist(property);
-			entityManager.getTransaction().commit();
 			return Optional.of(property);
 		} catch (Exception e) {
 			log.debug("Could not save Property", e);
-			entityManager.getTransaction().rollback();
 		}
 		return Optional.empty();
 	}
@@ -88,14 +82,11 @@ public class PropertyRepository implements PropertyRepositoryInterface<Property,
 		try {
 			Property property = entityManager.find(Property.class, propertyId);
 			if (property != null) {
-				entityManager.getTransaction().begin();
 				entityManager.remove(property);
-				entityManager.getTransaction().commit();
 				return true;
 			}
 		} catch (Exception e) {
 			log.debug("Could not delete Property with ID: " + propertyId);
-			entityManager.getTransaction().rollback();
 		}
 		return false;
 	}
@@ -106,15 +97,12 @@ public class PropertyRepository implements PropertyRepositoryInterface<Property,
 		try {
 			Property property = entityManager.find(Property.class, propertyId);
 			if (property != null) {
-				entityManager.getTransaction().begin();
 				property.setDeletedProperty(true);
 				entityManager.merge(property);
-				entityManager.getTransaction().commit();
 				return true;
 			}
 		} catch (Exception e) {
 			log.debug("Could not safely delete Property with ID: " + propertyId, e);
-			entityManager.getTransaction().rollback();
 		}
 		return false;
 	}
@@ -122,7 +110,6 @@ public class PropertyRepository implements PropertyRepositoryInterface<Property,
 	@Override
 	public Optional<Property> update(Property property) {
 		try {
-			entityManager.getTransaction().begin();
 			Property p = entityManager.find(Property.class, property.getPropertyId());
 			if (p != null) {
 
@@ -132,14 +119,12 @@ public class PropertyRepository implements PropertyRepositoryInterface<Property,
 				p.setOwner(property.getOwner());
 
 				entityManager.merge(p);
-				entityManager.getTransaction().commit();
 				return Optional.of(p);
 			} else {
 				log.debug("Property with ID: " + property.getPropertyId() + " not found for update.");
 			}
 		} catch (Exception e) {
 			log.debug("Could not update Property", e);
-			entityManager.getTransaction().rollback();
 		}
 		return Optional.empty();
 	}

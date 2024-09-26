@@ -17,6 +17,7 @@ import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
 import java.util.List;
 import java.util.Optional;
 import java.util.logging.Level;
@@ -30,7 +31,7 @@ public class OwnerResource {
 	@Inject
 	private OwnerService technikonService;
 
-    @Path("owner")
+    @Path("/owner")
     @GET
     public String owner() {
         return "Welcome to owner page";
