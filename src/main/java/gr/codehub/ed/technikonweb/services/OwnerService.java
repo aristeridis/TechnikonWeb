@@ -51,7 +51,7 @@ public class OwnerService implements OwnerServiceInterface {
 	}
 
 	public boolean safeDeleteById(Long propertyId) {
-		return propertyRepository.deleteById(propertyId);
+		return propertyRepository.safeDeleteById(propertyId);
 	}
 
 	public Optional<Property> updatePorperty(Property property) {
@@ -76,7 +76,7 @@ public class OwnerService implements OwnerServiceInterface {
 
 	public boolean deleteRepairById(Long repairId) {
 		try {
-			repairRepository.deleteById(repairId);
+			repairRepository.safeDeleteById(repairId);
 			return true;
 		} catch (ResourceNotFoundException rnfe) {
 			rnfe.getMessage();
@@ -90,7 +90,7 @@ public class OwnerService implements OwnerServiceInterface {
 
 	public boolean deleteOwnerById(Long ownerId) {
 		try {
-			ownerRepository.deleteById(ownerId);
+			ownerRepository.safeDeleteById(ownerId);
 			return true;
 		} catch (ResourceNotFoundException rnfe) {
 			rnfe.getMessage();
