@@ -36,9 +36,9 @@ public class OwnerResource {
 	public String owner() {
 		return "Welcome to owner page";
 	}
-	//create owner
+	//update owner
 	@Path("/owner")
-	@POST
+	@PUT
 	@Consumes("application/json")
 	@Produces("application/json")
 	public Owner updateOwner(Owner owner) {
