@@ -51,7 +51,6 @@ public class OwnerService implements OwnerServiceInterface {
 //	public OwnerService(PropertyRepository propertyRepository) {
 //		this.propertyRepository = propertyRepository;
 //	}
-
 	/**
 	 *
 	 * @param ownerId
@@ -163,5 +162,9 @@ public class OwnerService implements OwnerServiceInterface {
 			rnfe.getMessage();
 		}
 		return false;
+	}
+
+	public Optional<Owner> findOwnerById(Long ownerId) {
+		return ownerRepository.findByOwnerId(ownerId);
 	}
 }

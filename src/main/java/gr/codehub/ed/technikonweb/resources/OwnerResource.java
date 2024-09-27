@@ -17,7 +17,9 @@ import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.Response;
 import java.util.List;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import lombok.extern.slf4j.Slf4j;
@@ -218,5 +220,29 @@ public class OwnerResource {
 			property.setPropertyCode(-1);
 			return false;
 		}
+	}
+
+	@Path("/property/{ownerId}")
+	@POST
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Property createPropertyByOwnerId(@PathParam("ownerId") Long ownerId, Property property) {
+
+		Optional<Owner> optionalOwner = technikonService.findOwnerById(ownerId);
+
+		if (optionalOwner.isPresent()) {
+			Owner owner = optionalOwner.get();
+			Property newProperty = new Property(
+				property.getPropertyCode(),
+				property.getAddress(),
+				property.getYearOfConstruction(),
+				property.getPropertyType(),
+				owner
+			);
+
+			return technikonService.saveProperty(newProperty).orElseThrow(() -> new ResourceNotFoundException("Couldnt owner: " + property.getOwner()));
+
+		}
+		return null;
 	}
 }

@@ -31,6 +31,7 @@ public class OwnerRepository implements OwnerRepositoryInterface<Owner, Long, St
 	 * @return
 	 */
 	@Override
+	@Transactional
 	public Optional<Owner> findByOwnerId(Long ownerId) {
 		try {
 			Owner owner = entityManager.find(Owner.class, ownerId);
@@ -63,6 +64,7 @@ public class OwnerRepository implements OwnerRepositoryInterface<Owner, Long, St
 		return Optional.empty();
 	}
 //AND o.deleted = false
+
 	/**
 	 *
 	 * @param email
@@ -123,8 +125,7 @@ public class OwnerRepository implements OwnerRepositoryInterface<Owner, Long, St
 
 	/**
 	 *
-	 * @return
-	 * @throws ResourceNotFoundException
+	 * @return @throws ResourceNotFoundException
 	 */
 	@Override
 	@Transactional
