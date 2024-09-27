@@ -35,6 +35,7 @@ public class OwnerResource {
 	public String owner() {
 		return "Welcome to owner page";
 	}
+
 	//update owner
 	@Path("/owner")
 	@PUT
@@ -66,6 +67,7 @@ public class OwnerResource {
 			return false;
 		}
 	}
+
 	//get all properties of the owner
 	@Path("/{ownerId}")
 	@GET

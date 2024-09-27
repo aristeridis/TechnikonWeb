@@ -52,7 +52,7 @@ public class OwnerRepository implements OwnerRepositoryInterface<Owner, Long, St
 	public Optional<Owner> findByVatNumber(Long vatNumber) {
 		try {
 			TypedQuery<Owner> query = entityManager.createQuery(
-				"SELECT o FROM Owner o WHERE o.VatNumber = :vatNumber AND o.deleted = false", Owner.class);
+				"SELECT o FROM Owner o WHERE o.VatNumber = :vatNumber ", Owner.class);
 			query.setParameter("vatNumber", vatNumber);
 			Owner owner = query.getSingleResult();
 			return Optional.of(owner);
@@ -62,7 +62,7 @@ public class OwnerRepository implements OwnerRepositoryInterface<Owner, Long, St
 		}
 		return Optional.empty();
 	}
-
+//AND o.deleted = false
 	/**
 	 *
 	 * @param email

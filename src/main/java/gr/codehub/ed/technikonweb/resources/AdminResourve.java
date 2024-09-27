@@ -34,9 +34,8 @@ public class AdminResourve {
 	@Inject
 	private AdminService technikonService;
 
-	@Path("")
+	@Path("/dayRepairs")
 	@GET
-	@Consumes("application/json")
 	@Produces("application/json")
 	public List<Repair> getAllRepairsOfTheDay() {
 
@@ -57,17 +56,17 @@ public class AdminResourve {
 	@POST
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Optional<Repair> createRepair(Repair repair) {
+	public Repair createRepair(Repair repair) {
 		log.debug("repair: " + repair.getProperty());
 
 		try {
-			return technikonService.createRepair(repair);
+			return technikonService.createRepair(repair)
+				.orElseThrow(() -> new ResourceNotFoundException("Property not found with id: " + repair));
 
 		} catch (CustomException ce) {
 			Logger.getLogger(OwnerResource.class.getName()).log(Level.SEVERE, null, ce);
-
+			throw ce;
 		}
-		return Optional.empty();
 	}
 
 	/**
@@ -79,16 +78,16 @@ public class AdminResourve {
 	@PUT
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Optional<Repair> updateRepair(Repair repair) {
+	public Repair updateRepair(Repair repair) {
 		log.debug("Property:" + repair.getProperty());
 		try {
-			return technikonService.updateRepair(repair);
-
+			return technikonService.updateRepair(repair)
+				.orElseThrow(() -> new ResourceNotFoundException("Property not found with id: " + repair));
 		} catch (ResourceNotFoundException rnfe) {
 			Logger.getLogger(OwnerResource.class.getName()).log(Level.SEVERE, null, rnfe);
+			throw rnfe;
 
 		}
-		return Optional.empty();
 	}
 
 	/**
@@ -96,9 +95,9 @@ public class AdminResourve {
 	 * @param date
 	 * @return
 	 */
-	@Path("/repair/{repairDate}")
+	@Path("/repair/date/{repairDate}")
 	@GET
-	@Consumes("application/json")
+	@Produces("application/json")
 	public List<Repair> findByDate(@PathParam("repairDate") Date date) {
 		try {
 			return technikonService.findByDate(date);
@@ -110,9 +109,9 @@ public class AdminResourve {
 		return null;
 	}
 
-	@Path("/repair/{repairDates}")
+	@Path("/repair/dates/{repairDates}")
 	@GET
-	@Consumes("application/json")
+	@Produces("application/json")
 	public List<Repair> findByRangeOfDates(@PathParam("repairDates") Date dateStart, Date dateEnd) {
 		try {
 			return technikonService.findByRangeOfDates(dateStart, dateEnd);
@@ -129,9 +128,9 @@ public class AdminResourve {
 	 * @param propertyId
 	 * @return
 	 */
-	@Path("/repair/{propertyId}")
+	@Path("/repair/propertyId/{propertyId}")
 	@GET
-	@Consumes("application/json")
+	@Produces("application/json")
 	public List<Repair> findByPropertyId(@PathParam("propertyId") Long propertyId) {
 		try {
 			return technikonService.findByPropertyId(propertyId);
@@ -148,18 +147,18 @@ public class AdminResourve {
 	 * @param vatNumber
 	 * @return
 	 */
-	@Path("/owner/{vatNumber}")
+	@Path("/owner/vat/{vatNumber}")
 	@GET
-	@Consumes("application/json")
-	public Optional<Owner> findByVatNumber(@PathParam("vatNumber") Long vatNumber) {
+	@Produces("application/json")
+	public Owner findByVatNumber(@PathParam("vatNumber") Long vatNumber) {
 		try {
-			return technikonService.findByVatNumber(vatNumber);
+			return technikonService.findByVatNumber(vatNumber)
+				.orElseThrow(() -> new ResourceNotFoundException("Owner not found with vatNumber: " + vatNumber));
 
 		} catch (ResourceNotFoundException rnfe) {
 			Logger.getLogger(OwnerResource.class.getName()).log(Level.SEVERE, null, rnfe);
-
+			throw rnfe;
 		}
-		return Optional.empty();
 	}
 
 	/**
@@ -167,18 +166,17 @@ public class AdminResourve {
 	 * @param email
 	 * @return
 	 */
-	@Path("/owner/{email}")
+	@Path("/owner/email/{email}")
 	@GET
-	@Consumes("application/json")
-	public Optional<Owner> findByVatNumber(@PathParam("email") String email) {
+	@Produces("application/json")
+	public Owner findByEmail(@PathParam("email") String email) {
 		try {
-			return technikonService.findOwnerByEmail(email);
-
+			return technikonService.findOwnerByEmail(email)
+				.orElseThrow(() -> new ResourceNotFoundException("Owner not found with email: " + email));
 		} catch (ResourceNotFoundException rnfe) {
 			Logger.getLogger(OwnerResource.class.getName()).log(Level.SEVERE, null, rnfe);
-
+			throw rnfe;
 		}
-		return Optional.empty();
 	}
 
 	/**
@@ -226,18 +224,19 @@ public class AdminResourve {
 	 * @param propertyId
 	 * @return
 	 */
-	@Path("/property/{propertyId}")
+	@Path("/property/id/{propertyId}")
 	@GET
-	@Consumes("application/json")
-	public Optional<Property> findPropertyById(@PathParam("propertyId") Long propertyId) {
+	@Produces("application/json")
+	public Property findPropertyById(@PathParam("propertyId") Long propertyId) {
 		try {
-			return technikonService.findPropertyById(propertyId);
+			return technikonService.findPropertyById(propertyId)
+				.orElseThrow(() -> new ResourceNotFoundException("Property not found with id: " + propertyId));
 
 		} catch (ResourceNotFoundException rnfe) {
 			Logger.getLogger(OwnerResource.class.getName()).log(Level.SEVERE, null, rnfe);
+			throw rnfe;
 
 		}
-		return Optional.empty();
 	}
 
 	/**
@@ -245,9 +244,9 @@ public class AdminResourve {
 	 * @param vatNumber
 	 * @return
 	 */
-	@Path("/property/{vatNumber}")
+	@Path("/property/vat/{vatNumber}")
 	@GET
-	@Consumes("application/json")
+	@Produces("application/json")
 	public List<Property> findPropertyByVatNumber(@PathParam("vatNumber") Long vatNumber) {
 		try {
 			Optional<Owner> owner = technikonService.findByVatNumber(vatNumber);

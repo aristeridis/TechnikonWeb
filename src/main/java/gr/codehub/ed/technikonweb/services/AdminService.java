@@ -10,6 +10,7 @@ import gr.codehub.ed.technikonweb.models.Repair;
 import gr.codehub.ed.technikonweb.repositories.OwnerRepository;
 import gr.codehub.ed.technikonweb.repositories.PropertyRepository;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
@@ -35,6 +36,7 @@ public class AdminService implements AdminServiceInterface {
 	 * @return
 	 */
 	@Override
+	@Transactional
 	public List<Repair> getPendingRepairs() {
 		RepairRepository getRepairs = new RepairRepository();
 		List<Repair> allRepairs = getRepairs.findAll();
