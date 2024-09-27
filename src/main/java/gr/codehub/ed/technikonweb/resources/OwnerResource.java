@@ -23,10 +23,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import lombok.extern.slf4j.Slf4j;
 
-/**
- *
- * @author alexandrosaristeridis
- */
 @Path("Owner")
 @Slf4j
 @RequestScoped
@@ -35,22 +31,12 @@ public class OwnerResource {
 	@Inject
 	private OwnerService technikonService;
 
-	/**
-	 *
-	 * @return
-	 */
 	@Path("owner")
 	@GET
 	public String owner() {
 		return "Welcome to owner page";
 	}
 	//update owner
-
-	/**
-	 *
-	 * @param owner
-	 * @return
-	 */
 	@Path("/owner")
 	@PUT
 	@Consumes("application/json")
@@ -67,12 +53,6 @@ public class OwnerResource {
 	}
 
 	//owner delete
-
-	/**
-	 *
-	 * @param ownerId
-	 * @return
-	 */
 	@Path("/owner/{ownerId}")
 	@DELETE
 	@Consumes("application/json")
@@ -88,12 +68,6 @@ public class OwnerResource {
 		}
 	}
 	//get all properties of the owner
-
-	/**
-	 *
-	 * @param ownerId
-	 * @return
-	 */
 	@Path("/{ownerId}")
 	@GET
 	@Produces("text/json")
@@ -115,24 +89,20 @@ public class OwnerResource {
 	@GET
 	@Produces("text/json")
 	//details of the property by id
-	public Optional<Property> propertyFindById(@PathParam("propertyId") Long propertyId) {
-		try {
-			return technikonService.findById(propertyId);
+	public Property propertyFindById(@PathParam("propertyId") Long propertyId) {
+    try {
+        // Unwrap the Optional and return the Property if present
+        return technikonService.findById(propertyId)
+                .orElseThrow(() -> new ResourceNotFoundException("Property not found with id: " + propertyId));
 
-		} catch (ResourceNotFoundException rnfe) {
-			Logger.getLogger(OwnerResource.class.getName()).log(Level.SEVERE, null, rnfe);
+    } catch (ResourceNotFoundException rnfe) {
+        Logger.getLogger(OwnerResource.class.getName()).log(Level.SEVERE, null, rnfe);
+        throw rnfe;  // Re-throw exception to be handled elsewhere (e.g., by a global exception handler)
+    }
+}
 
-		}
-		return Optional.empty();
-	}
 
 	//property delete
-
-	/**
-	 *
-	 * @param propertyId
-	 * @return
-	 */
 	@Path("/property/{propertyId}")
 	@DELETE
 	@Consumes("application/json")
@@ -149,12 +119,6 @@ public class OwnerResource {
 	}
 
 	//update property
-
-	/**
-	 *
-	 * @param property
-	 * @return
-	 */
 	@Path("/property")
 	@PUT
 	@Consumes("application/json")
@@ -238,12 +202,6 @@ public class OwnerResource {
 		return Optional.empty();
 	}
 	//repair delete
-
-	/**
-	 *
-	 * @param repairId
-	 * @return
-	 */
 	@Path("/repair/{repairId}")
 	@DELETE
 	@Consumes("application/json")

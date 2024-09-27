@@ -34,10 +34,6 @@ public class AdminResourve {
 	@Inject
 	private AdminService technikonService;
 
-	/**
-	 *
-	 * @return
-	 */
 	@Path("")
 	@GET
 	@Consumes("application/json")
@@ -114,12 +110,6 @@ public class AdminResourve {
 		return null;
 	}
 
-	/**
-	 *
-	 * @param dateStart
-	 * @param dateEnd
-	 * @return
-	 */
 	@Path("/repair/{repairDates}")
 	@GET
 	@Consumes("application/json")

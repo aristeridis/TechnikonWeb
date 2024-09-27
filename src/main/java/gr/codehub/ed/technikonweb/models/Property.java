@@ -1,8 +1,10 @@
 package gr.codehub.ed.technikonweb.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import gr.codehub.ed.technikonweb.enums.PropertyType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -25,26 +27,27 @@ import lombok.Setter;
 
 public class Property {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 //    @Column(name = "property_id")
-    private long propertyId;
+	private long propertyId;
 //    @Column(unique = true)
-    private long E9;
-    private long propertyCode;
-    private String address;
-    private int yearOfConstruction;
-    private PropertyType propertyType;
+	private long E9;
+	private long propertyCode;
+	private String address;
+	private int yearOfConstruction;
+	private PropertyType propertyType;
 
-    @ManyToOne
-    @JoinColumn(name = "ownerId")
-    private Owner owner;
+	@JsonIgnore
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ownerId")
+	private Owner owner;
 
-    @OneToMany(mappedBy = "property")
-    private List<Repair> repairList;
+//	@OneToMany(mappedBy = "property")
+//	private List<Repair> repairList;
 
-    @Column(name = "is_deleted")
-    private boolean deletedProperty;
+	@Column(name = "is_deleted")
+	private boolean deletedProperty;
 
 	/**
 	 *
@@ -56,13 +59,13 @@ public class Property {
 	 */
 	public Property(long propertyCode, String address, int yearOfConstruction, PropertyType propertyType, Owner owner) {
 //        this.E9 = E9;
-        this.address = address;
-        this.yearOfConstruction = yearOfConstruction;
-        this.propertyType = propertyType;
-        this.owner = owner;
+		this.address = address;
+		this.yearOfConstruction = yearOfConstruction;
+		this.propertyType = propertyType;
+		this.owner = owner;
 //        this.propertyId = E9;
-        this.propertyCode = propertyCode;
-        this.E9 = this.propertyCode;
+		this.propertyCode = propertyCode;
+		this.E9 = this.propertyCode;
 
-    }
+	}
 }

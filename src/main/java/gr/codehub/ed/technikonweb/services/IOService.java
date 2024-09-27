@@ -214,8 +214,8 @@ public class IOService implements IOServiceInterface {
 //                    continue; 
 //                }
                 Repair repair = new Repair();
-                Optional<Property> property = propertyRepository.findById(Long.parseLong(data[1]));
-                property.ifPresent(repair::setProperty);
+//                Optional<Property> property = propertyRepository.findById(Long.parseLong(data[1]));
+//                property.ifPresent(repair::setProperty);
                 repair.setShortDescription(data[2].trim());
                 repair.setDateOfSubmission(parseDate(data[3]));
                 repair.setDescriptionOfWork(data[4].trim());

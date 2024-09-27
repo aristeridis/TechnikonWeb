@@ -99,11 +99,6 @@ public class PropertyRepository implements PropertyRepositoryInterface<Property,
 		return Optional.empty();
 	}
 
-	/**
-	 *
-	 * @param propertyId
-	 * @return
-	 */
 	@Override
 	@Transactional
 	public boolean deleteById(Long propertyId) {
