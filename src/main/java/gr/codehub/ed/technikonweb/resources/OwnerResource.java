@@ -18,7 +18,6 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import java.util.List;
-import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import lombok.extern.slf4j.Slf4j;
@@ -88,19 +87,16 @@ public class OwnerResource {
 	@Path("/property/{propertyId}")
 	@GET
 	@Produces("text/json")
-	//details of the property by id
 	public Property propertyFindById(@PathParam("propertyId") Long propertyId) {
-    try {
-        // Unwrap the Optional and return the Property if present
-        return technikonService.findById(propertyId)
-                .orElseThrow(() -> new ResourceNotFoundException("Property not found with id: " + propertyId));
+		try {
+			return technikonService.findById(propertyId)
+				.orElseThrow(() -> new ResourceNotFoundException("Property not found with id: " + propertyId));
 
-    } catch (ResourceNotFoundException rnfe) {
-        Logger.getLogger(OwnerResource.class.getName()).log(Level.SEVERE, null, rnfe);
-        throw rnfe;  // Re-throw exception to be handled elsewhere (e.g., by a global exception handler)
-    }
-}
-
+		} catch (ResourceNotFoundException rnfe) {
+			Logger.getLogger(OwnerResource.class.getName()).log(Level.SEVERE, null, rnfe);
+			throw rnfe;
+		}
+	}
 
 	//property delete
 	@Path("/property/{propertyId}")
@@ -123,19 +119,19 @@ public class OwnerResource {
 	@PUT
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Optional<Property> updatePorperty(Property property) {
+	public Property updatePorperty(Property property) {
 		try {
-			return technikonService.updatePorperty(property);
+			return technikonService.updatePorperty(property)
+				.orElseThrow(() -> new ResourceNotFoundException("Couldnt update property: " + property));
 
 		} catch (ResourceNotFoundException rnfe) {
-			rnfe.getMessage();
+			Logger.getLogger(OwnerResource.class.getName()).log(Level.SEVERE, null, rnfe);
+			throw rnfe;
 
 		}
-		return Optional.empty();
 	}
 
 	//create property
-
 	/**
 	 *
 	 * @param property
@@ -145,19 +141,20 @@ public class OwnerResource {
 	@POST
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Optional<Property> createProperty(Property property) {
+	public Property createProperty(Property property) {
 		log.debug("property: " + property.getOwner());
 		try {
-			return technikonService.saveProperty(property);
+			return technikonService.saveProperty(property)
+				.orElseThrow(() -> new ResourceNotFoundException("Couldnt create property: " + property));
 
 		} catch (ResourceNotFoundException rnfe) {
 			Logger.getLogger(OwnerResource.class.getName()).log(Level.SEVERE, null, rnfe);
+			throw rnfe;
+
 		}
-		return Optional.empty();
 	}
 
 	//create repair
-
 	/**
 	 *
 	 * @param repair
@@ -167,17 +164,18 @@ public class OwnerResource {
 	@POST
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Optional<Repair> createRepair(Repair repair) {
+	public Repair createRepair(Repair repair) {
 		log.debug("repair: " + repair.getProperty());
 
 		try {
-			return technikonService.createRepair(repair);
+			return technikonService.createRepair(repair)
+				.orElseThrow(() -> new ResourceNotFoundException("Couldnt create repair: " + repair));
 
 		} catch (CustomException ce) {
 			Logger.getLogger(OwnerResource.class.getName()).log(Level.SEVERE, null, ce);
+			throw ce;
 
 		}
-		return Optional.empty();
 	}
 	//update repair
 
@@ -190,17 +188,20 @@ public class OwnerResource {
 	@PUT
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Optional<Repair> updateRepair(Repair repair) {
+	public Repair updateRepair(Repair repair) {
 		log.debug("Property:" + repair.getProperty());
 		try {
-			return technikonService.updateRepair(repair);
+			return technikonService.updateRepair(repair)
+				.orElseThrow(() -> new ResourceNotFoundException("Couldnt update repair: " + repair));
 
 		} catch (ResourceNotFoundException rnfe) {
 			Logger.getLogger(OwnerResource.class.getName()).log(Level.SEVERE, null, rnfe);
+			throw rnfe;
 
 		}
-		return Optional.empty();
+
 	}
+
 	//repair delete
 	@Path("/repair/{repairId}")
 	@DELETE
