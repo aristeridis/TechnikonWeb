@@ -86,7 +86,7 @@ public class OwnerService implements OwnerServiceInterface {
 	 * @return
 	 */
 	public Optional<Property> updatePorperty(Property property) {
-		return propertyRepository.save(property);
+		return propertyRepository.update(property);
 	}
 
 	/**
@@ -146,7 +146,7 @@ public class OwnerService implements OwnerServiceInterface {
 	 * @return
 	 */
 	public Optional<Owner> updateOwner(Owner owner) {
-		return ownerRepository.save(owner);
+		return ownerRepository.update(owner);
 	}
 
 	/**

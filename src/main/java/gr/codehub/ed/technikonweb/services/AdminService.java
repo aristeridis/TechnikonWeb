@@ -226,7 +226,7 @@ public class AdminService implements AdminServiceInterface {
 	 * @return
 	 */
 	public Optional<Property> updateProperty(Property property) {
-		return propertyRepository.save(property);
+		return propertyRepository.update(property);
 	}
 
 	/**
