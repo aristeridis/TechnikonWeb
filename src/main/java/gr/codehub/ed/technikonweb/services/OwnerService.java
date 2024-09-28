@@ -86,7 +86,7 @@ public class OwnerService implements OwnerServiceInterface {
 	 * @return
 	 */
 	public Optional<Property> updatePorperty(Property property) {
-		return propertyRepository.update(property);
+		return propertyRepository.save(property);
 	}
 
 	/**
@@ -146,7 +146,7 @@ public class OwnerService implements OwnerServiceInterface {
 	 * @return
 	 */
 	public Optional<Owner> updateOwner(Owner owner) {
-		return ownerRepository.update(owner);
+		return ownerRepository.save(owner);
 	}
 
 	/**
@@ -164,6 +164,11 @@ public class OwnerService implements OwnerServiceInterface {
 		return false;
 	}
 
+	/**
+	 *
+	 * @param ownerId
+	 * @return
+	 */
 	public Optional<Owner> findOwnerById(Long ownerId) {
 		return ownerRepository.findByOwnerId(ownerId);
 	}

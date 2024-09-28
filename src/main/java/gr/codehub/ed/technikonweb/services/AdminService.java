@@ -201,7 +201,7 @@ public class AdminService implements AdminServiceInterface {
 	public Optional<Owner> findByVatNumber(Long vatNumber) {
 		return ownerRepository.findByVatNumber(vatNumber);
 	}
-	
+
 	/**
 	 *
 	 * @param email
@@ -226,7 +226,7 @@ public class AdminService implements AdminServiceInterface {
 	 * @return
 	 */
 	public Optional<Property> updateProperty(Property property) {
-		return propertyRepository.update(property);
+		return propertyRepository.save(property);
 	}
 
 	/**
@@ -245,5 +245,23 @@ public class AdminService implements AdminServiceInterface {
 	 */
 	public List<Property> findPropertyByOwnerId(Long ownerId) {
 		return propertyRepository.findByOwnerId(ownerId);
-}
+	}
+
+	/**
+	 *
+	 * @param ownerId
+	 * @return
+	 */
+	public Optional<Owner> findOwnerById(Long ownerId) {
+		return ownerRepository.findByOwnerId(ownerId);
+	}
+
+	/**
+	 *
+	 * @param property
+	 * @return
+	 */
+	public Optional<Property> saveProperty(Property property) {
+		return propertyRepository.save(property);
+	}
 }

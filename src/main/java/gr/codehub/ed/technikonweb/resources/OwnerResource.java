@@ -118,46 +118,6 @@ public class OwnerResource {
 		}
 	}
 
-	//update property
-	@Path("/property")
-	@PUT
-	@Consumes("application/json")
-	@Produces("application/json")
-	public Property updatePorperty(Property property) {
-		try {
-			return technikonService.updatePorperty(property)
-				.orElseThrow(() -> new ResourceNotFoundException("Couldnt update property: " + property));
-
-		} catch (ResourceNotFoundException rnfe) {
-			Logger.getLogger(OwnerResource.class.getName()).log(Level.SEVERE, null, rnfe);
-			throw rnfe;
-
-		}
-	}
-
-	//create property
-	/**
-	 *
-	 * @param property
-	 * @return
-	 */
-	@Path("/property")
-	@POST
-	@Consumes("application/json")
-	@Produces("application/json")
-	public Property createProperty(Property property) {
-		log.debug("property: " + property.getOwner());
-		try {
-			return technikonService.saveProperty(property)
-				.orElseThrow(() -> new ResourceNotFoundException("Couldnt create property: " + property));
-
-		} catch (ResourceNotFoundException rnfe) {
-			Logger.getLogger(OwnerResource.class.getName()).log(Level.SEVERE, null, rnfe);
-			throw rnfe;
-
-		}
-	}
-
 	//create repair
 	/**
 	 *
@@ -222,6 +182,11 @@ public class OwnerResource {
 		}
 	}
 
+	/**
+	 *
+	 * @param property
+	 * @return
+	 */
 	@Path("/property/{ownerId}")
 	@POST
 	@Consumes("application/json")
@@ -241,6 +206,30 @@ public class OwnerResource {
 			);
 
 			return technikonService.saveProperty(newProperty).orElseThrow(() -> new ResourceNotFoundException("Couldnt owner: " + property.getOwner()));
+
+		}
+		return null;
+	}
+
+	@Path("/property/{ownerId}")
+	@PUT
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Property updatePropertyByOwnerId(@PathParam("ownerId") Long ownerId, Property property) {
+
+		Optional<Owner> optionalOwner = technikonService.findOwnerById(ownerId);
+
+		if (optionalOwner.isPresent()) {
+			Owner owner = optionalOwner.get();
+			Property newProperty = new Property(
+				property.getPropertyCode(),
+				property.getAddress(),
+				property.getYearOfConstruction(),
+				property.getPropertyType(),
+				owner
+			);
+
+			return technikonService.updatePorperty(newProperty).orElseThrow(() -> new ResourceNotFoundException("Couldnt owner: " + property.getOwner()));
 
 		}
 		return null;
