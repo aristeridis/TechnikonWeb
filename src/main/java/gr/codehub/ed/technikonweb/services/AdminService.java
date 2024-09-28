@@ -38,8 +38,7 @@ public class AdminService implements AdminServiceInterface {
 	@Override
 	@Transactional
 	public List<Repair> getPendingRepairs() {
-		RepairRepository getRepairs = new RepairRepository();
-		List<Repair> allRepairs = getRepairs.findAll();
+		List<Repair> allRepairs = repairRepository.findAll();
 		return allRepairs.stream().filter((Repair pendingRepair) -> RepairStatus.PENDING.equals(pendingRepair.getRepairStatus())).collect(Collectors.toList());
 
 	}

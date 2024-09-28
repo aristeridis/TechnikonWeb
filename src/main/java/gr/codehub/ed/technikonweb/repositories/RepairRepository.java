@@ -141,6 +141,7 @@ public class RepairRepository implements RepairRepositoryInterface<Repair, Long,
 	 * @return
 	 */
 	@Override
+	@Transactional
 	public Optional<Repair> update(Repair repair) {
 		try {
 			repair = entityManager.merge(repair);

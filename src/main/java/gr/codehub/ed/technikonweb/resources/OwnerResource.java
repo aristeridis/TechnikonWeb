@@ -32,11 +32,11 @@ public class OwnerResource {
 	@Inject
 	private OwnerService technikonService;
 
-	@Path("owner")
-	@GET
-	public String owner() {
-		return "Welcome to owner page";
-	}
+//	@Path("/owner")
+//	@GET
+//	public String owner() {
+//		return "Welcome to owner page";
+//	}
 
 	//update owner
 	@Path("/owner")

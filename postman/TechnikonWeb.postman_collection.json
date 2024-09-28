@@ -1,0 +1,424 @@
+{
+	"info": {
+		"_postman_id": "4ad0f3d7-383d-40f0-b97e-401309f5f8bc",
+		"name": "TechnikonWeb",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24931593"
+	},
+	"item": [
+		{
+			"name": "ping",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/TechnikonWeb/resources/gen",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"TechnikonWeb",
+						"resources",
+						"gen"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "propertiesByOwnerId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/TechnikonWeb/resources/Owner/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"TechnikonWeb",
+						"resources",
+						"Owner",
+						"2"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "deserialize failed",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/TechnikonWeb/resources/Owner/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TechnikonWeb",
+								"resources",
+								"Owner",
+								"1"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "username, password, X-Requested-With, Content-Type, Authorization, Origin, Accept, Access-Control-Request-Method, Access-Control-Request-Headers"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 26 Sep 2024 18:40:05 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/json;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "38"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "POST, GET, PUT, OPTIONS, DELETE"
+						},
+						{
+							"key": "Access-Control-Max-Age",
+							"value": "1209600"
+						}
+					],
+					"cookie": [],
+					"body": "Not able to deserialize data provided."
+				}
+			]
+		},
+		{
+			"name": "propertiesOwnerByPropertyId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/TechnikonWeb/resources/Owner/property/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"TechnikonWeb",
+						"resources",
+						"Owner",
+						"property",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletePropertyById",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/TechnikonWeb/resources/Owner/property/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"TechnikonWeb",
+						"resources",
+						"Owner",
+						"property",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteRepair",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/TechnikonWeb/resources/Owner/repair/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"TechnikonWeb",
+						"resources",
+						"Owner",
+						"repair",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin getRepairByPropertyId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/TechnikonWeb/resources/Admin/repair/propertyId/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"TechnikonWeb",
+						"resources",
+						"Admin",
+						"repair",
+						"propertyId",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin findPropertyByVatNumber",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/TechnikonWeb/resources/Admin/property/vat/680123456",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"TechnikonWeb",
+						"resources",
+						"Admin",
+						"property",
+						"vat",
+						"680123456"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findPropertyById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/TechnikonWeb/resources/Admin/property/id/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"TechnikonWeb",
+						"resources",
+						"Admin",
+						"property",
+						"id",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Owner createPropertyForOwnerByOwnerId",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\n    {\n        \"propertyId\": 29,\n        \"propertyCode\": 349328,\n        \"address\": \"Pireos 145\",\n        \"yearOfConstruction\": 2012,\n        \"propertyType\": \"DETACHED_HOUSE\",\n        \"deletedProperty\": false,\n        \"e9\": 349328\n    }\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/TechnikonWeb/resources/Owner/property/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"TechnikonWeb",
+						"resources",
+						"Owner",
+						"property",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin createPropertyForOwnerByOwnerId",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"propertyId\": 29,\n        \"propertyCode\": 349328,\n        \"address\": \"Pireos 145\",\n        \"yearOfConstruction\": 2012,\n        \"propertyType\": \"DETACHED_HOUSE\",\n        \"deletedProperty\": false,\n        \"e9\": 349328\n    }\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/TechnikonWeb/resources/Admin/property/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"TechnikonWeb",
+						"resources",
+						"Admin",
+						"property",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin CreateRepair",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n        \"repairType\": \"INSULATION\",\n        \"shortDescription\": \"Fixing insulation\",\n        \"dateOfSubmission\": 1709589600000,\n        \"descriptionOfWork\": \"Insulate the attic\",\n        \"proposedDateOfStart\": 1711918800000,\n        \"proposedDateOfEnd\": 1712264400000,\n        \"proposedCost\": 300000000000,\n        \"acceptance\": false,\n        \"repairStatus\": \"PENDING\",\n        \"dateOfStart\": 1709330400000,\n        \"dateOfEnd\": 1715202000000,\n        \"deletedRepair\": false\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/TechnikonWeb/resources/Admin/repair",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"TechnikonWeb",
+						"resources",
+						"Admin",
+						"repair"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin updateRepair",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"repairId\": 2,\n        \"repairType\": \"INSULATION\",\n        \"shortDescription\": \"Fixing insulation\",\n        \"dateOfSubmission\": 1709589600000,\n        \"descriptionOfWork\": \"Insulate the attic\",\n        \"proposedDateOfStart\": 1711918800000,\n        \"proposedDateOfEnd\": 1712264400000,\n        \"proposedCost\": 4001,\n        \"acceptance\": false,\n        \"repairStatus\": \"PENDING\",\n        \"dateOfStart\": 1709330400000,\n        \"dateOfEnd\": 1715202000000,\n        \"deletedRepair\": false\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/TechnikonWeb/resources/Admin/repair",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"TechnikonWeb",
+						"resources",
+						"Admin",
+						"repair"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin Homepage",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/TechnikonWeb/resources/Admin/dayRepairs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"TechnikonWeb",
+						"resources",
+						"Admin",
+						"dayRepairs"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
