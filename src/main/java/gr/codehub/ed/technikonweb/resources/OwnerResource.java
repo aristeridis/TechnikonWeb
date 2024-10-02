@@ -24,6 +24,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ *
+ * @author alexandrosaristeridis
+ */
 @Path("Owner")
 @Slf4j
 @RequestScoped
@@ -39,6 +43,12 @@ public class OwnerResource {
 //	}
 
 	//update owner
+
+	/**
+	 *
+	 * @param owner
+	 * @return
+	 */
 	@Path("/owner")
 	@PUT
 	@Consumes("application/json")
@@ -55,6 +65,12 @@ public class OwnerResource {
 	}
 
 	//owner delete
+
+	/**
+	 *
+	 * @param ownerId
+	 * @return
+	 */
 	@Path("/owner/{ownerId}")
 	@DELETE
 	@Consumes("application/json")
@@ -71,6 +87,12 @@ public class OwnerResource {
 	}
 
 	//get all properties of the owner
+
+	/**
+	 *
+	 * @param ownerId
+	 * @return
+	 */
 	@Path("/{ownerId}")
 	@GET
 	@Produces("text/json")
@@ -103,6 +125,12 @@ public class OwnerResource {
 	}
 
 	//property delete
+
+	/**
+	 *
+	 * @param propertyId
+	 * @return
+	 */
 	@Path("/property/{propertyId}")
 	@DELETE
 	@Consumes("application/json")
@@ -167,6 +195,12 @@ public class OwnerResource {
 	}
 
 	//repair delete
+
+	/**
+	 *
+	 * @param repairId
+	 * @return
+	 */
 	@Path("/repair/{repairId}")
 	@DELETE
 	@Consumes("application/json")
@@ -184,6 +218,7 @@ public class OwnerResource {
 
 	/**
 	 *
+	 * @param ownerId
 	 * @param property
 	 * @return
 	 */
@@ -210,7 +245,13 @@ public class OwnerResource {
 		}
 		return null;
 	}
-
+	
+	/**
+	 *
+	 * @param ownerId
+	 * @param property
+	 * @return
+	 */
 	@Path("/property/{ownerId}")
 	@PUT
 	@Consumes("application/json")
@@ -234,6 +275,12 @@ public class OwnerResource {
 		}
 		return null;
 	}
+
+	/**
+	 *
+	 * @param property
+	 * @return
+	 */
 	@Path("/property")
 	@PUT
 	@Consumes("application/json")

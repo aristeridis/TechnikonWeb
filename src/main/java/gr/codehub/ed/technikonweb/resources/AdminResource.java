@@ -34,6 +34,10 @@ public class AdminResource {
 	@Inject
 	private AdminService technikonService;
 
+	/**
+	 *
+	 * @return
+	 */
 	@Path("/dayRepairs")
 	@GET
 	@Produces("application/json")
@@ -109,6 +113,12 @@ public class AdminResource {
 		return null;
 	}
 
+	/**
+	 *
+	 * @param dateStart
+	 * @param dateEnd
+	 * @return
+	 */
 	@Path("/repair/dates/{repairDates}")
 	@GET
 	@Produces("application/json")
@@ -181,6 +191,7 @@ public class AdminResource {
 
 	/**
 	 *
+	 * @param ownerId
 	 * @param property
 	 * @return
 	 */
@@ -210,6 +221,7 @@ public class AdminResource {
 
 	/**
 	 *
+	 * @param ownerId
 	 * @param property
 	 * @return
 	 */
@@ -236,7 +248,6 @@ public class AdminResource {
 		}
 		return null;
 	}
-
 
 	/**
 	 *

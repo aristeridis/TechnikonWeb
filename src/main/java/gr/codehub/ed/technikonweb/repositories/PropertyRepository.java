@@ -99,6 +99,11 @@ public class PropertyRepository implements PropertyRepositoryInterface<Property,
 		return Optional.empty();
 	}
 
+	/**
+	 *
+	 * @param propertyId
+	 * @return
+	 */
 	@Override
 	@Transactional
 	public boolean deleteById(Long propertyId) {
@@ -163,6 +168,11 @@ public class PropertyRepository implements PropertyRepositoryInterface<Property,
 		return Optional.empty();
 	}
 
+	/**
+	 *
+	 * @param property
+	 * @return
+	 */
 	@Transactional
 	public Optional<Property> updateProperty(Property property) {
 		try {

@@ -2,8 +2,6 @@ package gr.codehub.ed.technikonweb.repositories;
 
 import gr.codehub.ed.technikonweb.exceptions.ResourceNotFoundException;
 import gr.codehub.ed.technikonweb.models.Repair;
-import gr.codehub.ed.technikonweb.utility.JPAUtil;
-import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
