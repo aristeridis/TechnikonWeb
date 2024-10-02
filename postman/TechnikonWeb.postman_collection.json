@@ -427,7 +427,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"propertyId\": 2,\n    \"propertyCode\": 8431,\n    \"address\": \"Ermou 12\",\n    \"yearOfConstruction\": 2003,\n    \"propertyType\": \"MAISONETTE\",\n    \"deletedProperty\": false,\n    \"e9\": 8431\n}",
+					"raw": "{\n    \"propertyId\": 78,\n    \"propertyCode\": 84,\n    \"address\": \"Ermou 12\",\n    \"yearOfConstruction\": 2003,\n    \"propertyType\": \"MAISONETTE\",\n    \"deletedProperty\": false,\n    \"e9\": 84\n}",
 					"options": {
 						"raw": {
 							"language": "json"

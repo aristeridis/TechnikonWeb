@@ -169,7 +169,7 @@ public class PropertyRepository implements PropertyRepositoryInterface<Property,
 			property = entityManager.merge(property);
 			return Optional.of(property);
 		} catch (Exception e) {
-			log.error("Error updating repair: " + property, e);
+			log.error("Error updating property: " + property, e);
 		}
 		return Optional.empty();
 	}
