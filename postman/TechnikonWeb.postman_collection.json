@@ -33,7 +33,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/TechnikonWeb/resources/Owner/2",
+					"raw": "http://localhost:8080/TechnikonWeb/resources/Owner/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -43,7 +43,7 @@
 						"TechnikonWeb",
 						"resources",
 						"Owner",
-						"2"
+						"1"
 					]
 				}
 			},
@@ -415,6 +415,37 @@
 						"resources",
 						"Admin",
 						"dayRepairs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Owner update property",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"propertyId\": 2,\n    \"propertyCode\": 8431,\n    \"address\": \"Ermou 12\",\n    \"yearOfConstruction\": 2003,\n    \"propertyType\": \"MAISONETTE\",\n    \"deletedProperty\": false,\n    \"e9\": 8431\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/TechnikonWeb/resources/Owner/property",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"TechnikonWeb",
+						"resources",
+						"Owner",
+						"property"
 					]
 				}
 			},

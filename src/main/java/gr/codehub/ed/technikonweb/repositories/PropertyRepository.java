@@ -141,6 +141,7 @@ public class PropertyRepository implements PropertyRepositoryInterface<Property,
 	 * @return
 	 */
 	@Override
+	@Transactional
 	public Optional<Property> update(Property property) {
 		try {
 			Property p = entityManager.find(Property.class, property.getPropertyId());
@@ -158,6 +159,17 @@ public class PropertyRepository implements PropertyRepositoryInterface<Property,
 			}
 		} catch (Exception e) {
 			log.debug("Could not update Property", e);
+		}
+		return Optional.empty();
+	}
+
+	@Transactional
+	public Optional<Property> updateProperty(Property property) {
+		try {
+			property = entityManager.merge(property);
+			return Optional.of(property);
+		} catch (Exception e) {
+			log.error("Error updating repair: " + property, e);
 		}
 		return Optional.empty();
 	}

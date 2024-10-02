@@ -86,7 +86,7 @@ public class OwnerService implements OwnerServiceInterface {
 	 * @return
 	 */
 	public Optional<Property> updatePorperty(Property property) {
-		return propertyRepository.update(property);
+		return propertyRepository.updateProperty(property);
 	}
 
 	/**

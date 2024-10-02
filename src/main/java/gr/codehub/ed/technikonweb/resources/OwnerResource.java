@@ -234,4 +234,19 @@ public class OwnerResource {
 		}
 		return null;
 	}
+	@Path("/property")
+	@PUT
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Property updateProperty(Property property) {
+//		log.debug("Property:" + property.getPropertyId());
+		try {
+			return technikonService.updatePorperty(property)
+				.orElseThrow(() -> new ResourceNotFoundException("Property not found with id: " + property));
+		} catch (ResourceNotFoundException rnfe) {
+			Logger.getLogger(OwnerResource.class.getName()).log(Level.SEVERE, null, rnfe);
+			throw rnfe;
+
+		}
+	}
 }
