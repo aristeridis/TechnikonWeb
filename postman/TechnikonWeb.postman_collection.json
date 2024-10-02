@@ -201,54 +201,6 @@
 			"response": []
 		},
 		{
-			"name": "Admin getRepairByPropertyId",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/TechnikonWeb/resources/Admin/repair/propertyId/2",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"TechnikonWeb",
-						"resources",
-						"Admin",
-						"repair",
-						"propertyId",
-						"2"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Admin findPropertyByVatNumber",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/TechnikonWeb/resources/Admin/property/vat/680123456",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"TechnikonWeb",
-						"resources",
-						"Admin",
-						"property",
-						"vat",
-						"680123456"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "findPropertyById",
 			"request": {
 				"method": "GET",
@@ -299,6 +251,85 @@
 						"Owner",
 						"property",
 						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Owner update property",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"propertyId\": 78,\n    \"propertyCode\": 84,\n    \"address\": \"Ermou 12\",\n    \"yearOfConstruction\": 2003,\n    \"propertyType\": \"MAISONETTE\",\n    \"deletedProperty\": false,\n    \"e9\": 84\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/TechnikonWeb/resources/Owner/property",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"TechnikonWeb",
+						"resources",
+						"Owner",
+						"property"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin getRepairByPropertyId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/TechnikonWeb/resources/Admin/repair/propertyId/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"TechnikonWeb",
+						"resources",
+						"Admin",
+						"repair",
+						"propertyId",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin findPropertyByVatNumber",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/TechnikonWeb/resources/Admin/property/vat/680123456",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"TechnikonWeb",
+						"resources",
+						"Admin",
+						"property",
+						"vat",
+						"680123456"
 					]
 				}
 			},
@@ -415,37 +446,6 @@
 						"resources",
 						"Admin",
 						"dayRepairs"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Owner update property",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"propertyId\": 78,\n    \"propertyCode\": 84,\n    \"address\": \"Ermou 12\",\n    \"yearOfConstruction\": 2003,\n    \"propertyType\": \"MAISONETTE\",\n    \"deletedProperty\": false,\n    \"e9\": 84\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8080/TechnikonWeb/resources/Owner/property",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"TechnikonWeb",
-						"resources",
-						"Owner",
-						"property"
 					]
 				}
 			},
